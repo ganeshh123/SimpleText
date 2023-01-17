@@ -423,7 +423,7 @@ namespace SimpleText
 
         private void ViewHelpToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            System.Diagnostics.Process.Start("https://github.com/ganeshh123/SimpleText/blob/main/README.md");
+            System.Diagnostics.Process.Start("https://ganeshh123.github.io/SimpleText/#usage");
         }
 
         private void AboutToolStripMenuItem_Click(object sender, EventArgs e)

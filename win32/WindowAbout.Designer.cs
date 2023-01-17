@@ -32,7 +32,7 @@
             this.LabelAppName = new System.Windows.Forms.Label();
             this.LabelAppVersion = new System.Windows.Forms.Label();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
-            this.label1 = new System.Windows.Forms.Label();
+            this.labelAuthor = new System.Windows.Forms.Label();
             this.linkLabelIconDesigner = new System.Windows.Forms.LinkLabel();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
             this.SuspendLayout();
@@ -71,15 +71,17 @@
             this.pictureBox1.TabIndex = 2;
             this.pictureBox1.TabStop = false;
             // 
-            // label1
+            // labelAuthor
             // 
-            this.label1.AutoSize = true;
-            this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(100, 164);
-            this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(102, 20);
-            this.label1.TabIndex = 3;
-            this.label1.Text = "© Ganesh H";
+            this.labelAuthor.AutoSize = true;
+            this.labelAuthor.Cursor = System.Windows.Forms.Cursors.Hand;
+            this.labelAuthor.Font = new System.Drawing.Font("Microsoft Sans Serif", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.labelAuthor.Location = new System.Drawing.Point(114, 164);
+            this.labelAuthor.Name = "labelAuthor";
+            this.labelAuthor.Size = new System.Drawing.Size(75, 18);
+            this.labelAuthor.TabIndex = 3;
+            this.labelAuthor.Text = "Ganesh H";
+            this.labelAuthor.Click += new System.EventHandler(this.LabelAuthor_Click);
             // 
             // linkLabelIconDesigner
             // 
@@ -98,7 +100,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(302, 193);
             this.Controls.Add(this.linkLabelIconDesigner);
-            this.Controls.Add(this.label1);
+            this.Controls.Add(this.labelAuthor);
             this.Controls.Add(this.pictureBox1);
             this.Controls.Add(this.LabelAppVersion);
             this.Controls.Add(this.LabelAppName);
@@ -122,7 +124,7 @@
         private System.Windows.Forms.Label LabelAppName;
         private System.Windows.Forms.Label LabelAppVersion;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Label labelAuthor;
         private System.Windows.Forms.LinkLabel linkLabelIconDesigner;
     }
 }

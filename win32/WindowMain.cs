@@ -8,7 +8,6 @@ using System.Windows.Forms;
 using System.Diagnostics;
 using TextBox = System.Windows.Forms.TextBox;
 using Microsoft.Win32;
-using Microsoft.Win32;
 
 namespace SimpleText
 {
@@ -22,14 +21,14 @@ namespace SimpleText
         }
 
         // Data Structures
-        readonly Stack<string> undoActions = new Stack<string>();
-        readonly Stack<string> redoActions = new Stack<string>();
-        readonly int defaultFontSize = 12;
-        string openFilePath = null;
-        string openFileInitialText = "";
-        bool fileModified = false;
-        bool darkThemeEnabled = (int) Registry.GetValue("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "AppsUseLightTheme", "1") == 0;
-        public  Color fgColor = Color.Black;
+        private readonly Stack<string> undoActions = new Stack<string>();
+        private readonly Stack<string> redoActions = new Stack<string>();
+        private readonly int defaultFontSize = 12;
+        private string openFilePath = null;
+        private string openFileInitialText = "";
+        private bool fileModified = false;
+        private bool darkThemeEnabled = (int) Registry.GetValue("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "AppsUseLightTheme", "1") == 0;
+        public Color fgColor = Color.Black;
         public Color bgColor = Color.White;
 
 
@@ -173,12 +172,6 @@ namespace SimpleText
                         }
                     };
                     sectionMenu.DropDownClosed += menuItemHoverColorReset;
-
-                    /*foreach (ToolStripMenuItem sectionMenuItem in sectionMenu.DropDown.Items)
-                    {
-                        sectionMenuItem.MouseEnter -= menuItemHoverColorChange;
-                        sectionMenuItem.MouseLeave -= menuItemHoverColorReset;
-                    }*/
                 }
             }
         }

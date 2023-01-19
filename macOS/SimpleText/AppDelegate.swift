@@ -10,11 +10,11 @@ import Cocoa
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
 
-    let newWindowEditor = WindowEditorController()
+    let windowEditor = WindowEditorController()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Insert code here to initialize your application
-        newWindowEditor.showWindow(nil)
+        windowEditor.showWindow(nil)
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -24,6 +24,26 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
         return true
     }
+    
+    @IBAction func openMenuItemClicked(_ sender: NSMenuItem) {
+        let openFile: NSOpenPanel = NSOpenPanel()
+        
+        openFile.showsHiddenFiles = true
+        openFile.canChooseDirectories = false
+        openFile.allowsMultipleSelection = false
+        
+        if(openFile.runModal() != NSApplication.ModalResponse.OK){
+            return
+        }
+        
+        let result = openFile.url
+        if(result == nil){
+            return
+        }
+        
+        windowEditor.readFile(file: result!)
+    }
+    
 
 
 }

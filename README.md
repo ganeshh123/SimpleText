@@ -33,7 +33,7 @@ An extremely simple plain text editor.
  Double click on the downloaded program executable file:
  - **Windows**: `SimpleText.exe`
 ### Interface
-The user interface consists of tree parts - the title bar, the menu bar, and the editor:
+The user interface consists of three parts - the title bar, the menu bar, and the editor:
 ![user-interface](docs/img_usage_interface.jpg)  
 
 - **Title Bar** - The title bar at the top of the window provides the standard options to minimize, change the size, and close the application window. If an existing file has been opened in the application, it's name is shown in the title bar.

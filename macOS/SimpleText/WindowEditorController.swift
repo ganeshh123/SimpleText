@@ -60,4 +60,55 @@ class WindowEditorController: NSWindowController {
         }
     }
     
+    @IBAction func openMenuItemClicked(_ sender: NSMenuItem) {
+        let openFile: NSOpenPanel = NSOpenPanel()
+        
+        openFile.showsHiddenFiles = true
+        openFile.canChooseDirectories = false
+        openFile.allowsMultipleSelection = false
+        
+        if(openFile.runModal() != NSApplication.ModalResponse.OK){
+            return
+        }
+        
+        let result = openFile.url
+        if(result == nil){
+            return
+        }
+        
+        readFile(file: result!)
+    }
+    
+    @IBAction func saveMenuItemClicked(_ sender: NSMenuItem) {
+        if(openedFile == nil){
+            saveAsMenuItemClicked(sender)
+            return
+        }
+        
+        writeFile(file: openedFile!)
+        readFile(file: openedFile!)
+    }
+    
+    @IBAction func saveAsMenuItemClicked(_ sender: NSMenuItem?) {
+        let saveFile: NSSavePanel = NSSavePanel()
+        
+        saveFile.allowedFileTypes = ["txt"]
+        
+        saveFile.showsHiddenFiles = true
+        saveFile.allowsOtherFileTypes = true
+        saveFile.isExtensionHidden = false
+        
+        if(saveFile.runModal() != NSApplication.ModalResponse.OK){
+            return
+        }
+        
+        let result = saveFile.url
+        if(result == nil){
+            return
+        }
+        
+        writeFile(file: result!)
+        readFile(file: result!)
+    }
+    
 }

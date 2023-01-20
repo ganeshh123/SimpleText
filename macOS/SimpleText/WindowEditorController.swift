@@ -29,7 +29,11 @@ class WindowEditorController: NSWindowController {
         textViewEditor.font = defaultFont
     }
     
-    public func readFile(file: URL){
+    func getOpenedFile() -> URL? {
+        return openedFile
+    }
+    
+    func readFile(file: URL){
         var fileContent = ""
         do{
             fileContent = try String(contentsOf: file)
@@ -46,7 +50,7 @@ class WindowEditorController: NSWindowController {
         textViewEditor.string = fileContent
     }
     
-    public func writeFile(file: URL){
+    func writeFile(file: URL){
         let fileContent = textViewEditor.string
         
         do{

@@ -44,8 +44,19 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         windowEditor.readFile(file: result!)
     }
     
-
-    @IBAction func saveAsMenuItemClicked(_ sender: NSMenuItem) {
+    @IBAction func saveMenuItemClicked(_ sender: NSMenuItem) {
+        let openedFile: URL? = windowEditor.getOpenedFile()
+        
+        if(openedFile == nil){
+            saveAsMenuItemClicked(sender)
+            return
+        }
+        
+        windowEditor.writeFile(file: openedFile!)
+        windowEditor.readFile(file: openedFile!)
+    }
+    
+    @IBAction func saveAsMenuItemClicked(_ sender: NSMenuItem?) {
         let saveFile: NSSavePanel = NSSavePanel()
         
         saveFile.allowedFileTypes = ["txt"]

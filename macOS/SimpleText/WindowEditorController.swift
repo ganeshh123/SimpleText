@@ -30,7 +30,6 @@ class WindowEditorController: NSWindowController {
     }
     
     public func readFile(file: URL){
-        print(file)
         var fileContent = ""
         do{
             fileContent = try String(contentsOf: file)
@@ -45,6 +44,16 @@ class WindowEditorController: NSWindowController {
         fileModified = false
         
         textViewEditor.string = fileContent
+    }
+    
+    public func writeFile(file: URL){
+        let fileContent = textViewEditor.string
+        
+        do{
+            try fileContent.write(to: file, atomically: true, encoding: String.Encoding.utf8)
+        }catch{
+            assertionFailure("An error occured saving the file \(file.path) : \(error)")
+        }
     }
     
 }

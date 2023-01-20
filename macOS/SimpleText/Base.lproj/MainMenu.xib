@@ -56,7 +56,7 @@
                             </menuItem>
                             <menuItem title="Save As…" keyEquivalent="S" id="Bw7-FT-i3A">
                                 <connections>
-                                    <action selector="saveDocumentAs:" target="-1" id="mDf-zr-I0C"/>
+                                    <action selector="saveAsMenuItemClicked:" target="Voe-Tx-rLC" id="Cmf-tN-PxU"/>
                                 </connections>
                             </menuItem>
                         </items>

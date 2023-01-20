@@ -45,6 +45,28 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     }
     
 
+    @IBAction func saveAsMenuItemClicked(_ sender: NSMenuItem) {
+        let saveFile: NSSavePanel = NSSavePanel()
+        
+        saveFile.allowedFileTypes = ["txt"]
+        
+        saveFile.showsHiddenFiles = true
+        saveFile.allowsOtherFileTypes = true
+        saveFile.isExtensionHidden = false
+        
+        if(saveFile.runModal() != NSApplication.ModalResponse.OK){
+            return
+        }
+        
+        let result = saveFile.url
+        if(result == nil){
+            return
+        }
+        
+        windowEditor.writeFile(file: result!)
+        windowEditor.readFile(file: result!)
+    }
+    
 
 }
 

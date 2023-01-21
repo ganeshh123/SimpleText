@@ -35,5 +35,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     func removeWindowEditor(windowId: UUID){
         openWindows.removeValue(forKey: windowId.uuidString)
     }
+    
+    /* App Menu Events */
+    
+    @IBAction func newMenuItemClicked(_ sender: NSMenuItem) {
+        createWindowEditor()
+    }
 }
 

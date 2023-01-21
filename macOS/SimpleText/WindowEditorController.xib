@@ -90,7 +90,7 @@
                         <items>
                             <menuItem title="New" keyEquivalent="n" id="BHp-OX-S0L">
                                 <connections>
-                                    <action selector="newDocument:" target="-1" id="r5r-OQ-P7s"/>
+                                    <action selector="newMenuItemClicked:" target="-2" id="pcR-1O-9Qt"/>
                                 </connections>
                             </menuItem>
                             <menuItem title="Open…" keyEquivalent="o" id="7N5-IB-ZvR">

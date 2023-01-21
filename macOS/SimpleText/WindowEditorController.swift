@@ -77,6 +77,14 @@ class WindowEditorController: NSWindowController, NSWindowDelegate {
     
     /* Menu Button Events */
     
+    @IBAction func newMenuItemClicked(_ sender: NSMenuItem) {
+        guard let appDelegate = NSApplication.shared.delegate as? AppDelegate else {
+             return
+        }
+        appDelegate.createWindowEditor()
+    }
+    
+    
     @IBAction func openMenuItemClicked(_ sender: NSMenuItem) {
         let openFile: NSOpenPanel = NSOpenPanel()
         

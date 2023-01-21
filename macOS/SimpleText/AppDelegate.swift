@@ -9,12 +9,11 @@ import Cocoa
 
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
-
-    let windowEditor = WindowEditorController()
+    
+    var openWindows = [String : WindowEditorController]()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
-        // Insert code here to initialize your application
-        windowEditor.showWindow(nil)
+        createWindowEditor()
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -25,6 +24,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         return true
     }
     
-
+    func createWindowEditor(){
+        let newWindowEditor: WindowEditorController = WindowEditorController()
+        let newWindowId: UUID = newWindowEditor.getWindowId()
+        
+        openWindows[newWindowId.uuidString] = newWindowEditor
+        newWindowEditor.showWindow(nil)
+    }
+    
+    func removeWindowEditor(windowId: UUID){
+        openWindows.removeValue(forKey: windowId.uuidString)
+    }
 }
 

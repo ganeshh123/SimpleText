@@ -7,12 +7,13 @@
 
 import Cocoa
 
-class WindowEditorController: NSWindowController {
+class WindowEditorController: NSWindowController, NSWindowDelegate {
     
-    let defaultFont: NSFont? = NSFont(name: "Courier New", size: 18)
-    var openedFile: URL? = nil
-    var openedFileInitialText: String = ""
-    var fileModified: Bool = false
+    private let windowId: UUID = UUID()
+    private let defaultFont: NSFont? = NSFont(name: "Courier New", size: 18)
+    private var openedFile: URL? = nil
+    private var openedFileInitialText: String = ""
+    private var fileModified: Bool = false
     
     
     
@@ -29,9 +30,23 @@ class WindowEditorController: NSWindowController {
         textViewEditor.font = defaultFont
     }
     
-    func getOpenedFile() -> URL? {
-        return openedFile
+    /* Get/Set Functions */
+    
+    func getWindowId() -> UUID {
+        return windowId
     }
+    
+    
+    /* Window Events */
+    
+    func windowWillClose(_ notification: Notification) {
+        guard let appDelegate = NSApplication.shared.delegate as? AppDelegate else {
+             return
+        }
+        appDelegate.removeWindowEditor(windowId: windowId)
+    }
+    
+    /* File Read/Write Functions */
     
     func readFile(file: URL){
         var fileContent = ""
@@ -59,6 +74,8 @@ class WindowEditorController: NSWindowController {
             assertionFailure("An error occured saving the file \(file.path) : \(error)")
         }
     }
+    
+    /* Menu Button Events */
     
     @IBAction func openMenuItemClicked(_ sender: NSMenuItem) {
         let openFile: NSOpenPanel = NSOpenPanel()

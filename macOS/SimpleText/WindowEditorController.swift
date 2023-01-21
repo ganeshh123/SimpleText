@@ -14,20 +14,26 @@ class WindowEditorController: NSWindowController, NSWindowDelegate {
     private var openedFile: URL? = nil
     private var openedFileInitialText: String = ""
     private var fileModified: Bool = false
-    
-    
-    
+    private var darkModeEnabled: Bool = false
     @IBOutlet var textViewEditor: NSTextView!
+    @IBOutlet var darkThemeMenuItem: NSMenuItem!
     
     
     convenience init() {
         self.init(windowNibName: "WindowEditorController")
+        if #available(macOS 10.14, *){
+            darkModeEnabled = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") == "Dark"
+        }else{
+            darkThemeMenuItem.isEnabled = false
+        }
     }
 
     override func windowDidLoad() {
         super.windowDidLoad()
-
         textViewEditor.font = defaultFont
+        if(darkModeEnabled){
+            darkThemeMenuItem.state = .on
+        }
     }
     
     /* Get/Set Functions */
@@ -135,5 +141,33 @@ class WindowEditorController: NSWindowController, NSWindowDelegate {
         writeFile(file: result!)
         readFile(file: result!)
     }
+    
+    @IBAction func zoomInMenuItemClicked(_ sender: NSMenuItem) {
+        textViewEditor.font = NSFont(name: textViewEditor.font!.fontName, size: textViewEditor.font!.pointSize + 1)
+    }
+    
+    @IBAction func zoomOutMenuItemClicked(_ sender: Any) {
+        textViewEditor.font = NSFont(name: textViewEditor.font!.fontName, size: textViewEditor.font!.pointSize - 1)
+    }
+    
+    @IBAction func resetZoomMenuItemClicked(_ sender: Any) {
+        textViewEditor.font = NSFont(name: textViewEditor.font!.fontName, size: defaultFont!.pointSize)
+    }
+    
+    @IBAction func darkThemeMenuItemClicked(_ sender: NSMenuItem) {
+        let enableDarkTheme: Bool = !(sender.state == .on)
+        if(enableDarkTheme){
+            if #available(macOS 10.14, *) {
+                NSApp.appearance = NSAppearance(named: .darkAqua)
+            }
+            sender.state = .on
+        }else{
+            if #available(macOS 10.14, *) {
+                NSApp.appearance = NSAppearance(named: .aqua)
+            }
+            sender.state = .off
+        }
+    }
+    
     
 }

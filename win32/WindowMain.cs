@@ -20,6 +20,8 @@ namespace SimpleText
             Dark
         }
 
+        private readonly string windowId = Guid.NewGuid().ToString();
+
         // Data Structures
         private readonly Stack<string> undoActions = new Stack<string>();
         private readonly Stack<string> redoActions = new Stack<string>();
@@ -41,6 +43,12 @@ namespace SimpleText
                 SwitchTheme(ColorTheme.Dark);
                 darkThemeToolStripMenuItem.Checked= true;
             }
+        }
+
+        // Get/Set Functions
+        public string getWindowId()
+        {
+            return windowId;
         }
 
         // Window Load Actions
@@ -207,6 +215,7 @@ namespace SimpleText
                     this.Close();
                 }
             }
+            Program.removeWindowEditor(this.windowId);
 
         }
 
@@ -228,8 +237,10 @@ namespace SimpleText
         // Menu Bar Events
         private void NewToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            var info = new System.Diagnostics.ProcessStartInfo(Application.ExecutablePath);
-            System.Diagnostics.Process.Start(info);
+            /*var info = new System.Diagnostics.ProcessStartInfo(Application.ExecutablePath);
+            System.Diagnostics.Process.Start(info);*/
+
+            Program.createWindowEditor();
         }
 
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)

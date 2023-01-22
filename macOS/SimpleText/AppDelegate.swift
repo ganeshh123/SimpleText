@@ -11,14 +11,18 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     var openWindows = [String : WindowEditorController]()
-    
     // Application level settings
+    var darkModeEnabled: Bool = false
     var wordWrapEnabled: Bool = true
-
+    
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Remove annoying forced help menu customization
         let unusedMenu: NSMenu = NSMenu(title: "Help")
         NSApplication.shared.helpMenu = unusedMenu
+        
+        if #available(macOS 10.14, *){
+            darkModeEnabled = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") == "Dark"
+        }
         
         createWindowEditor()
     }

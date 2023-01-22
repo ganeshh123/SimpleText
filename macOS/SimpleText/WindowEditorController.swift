@@ -21,22 +21,17 @@ class WindowEditorController: NSWindowController, NSWindowDelegate {
     
     convenience init() {
         self.init(windowNibName: "WindowEditorController")
-        if #available(macOS 10.14, *){
-            darkModeEnabled = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") == "Dark"
-        }else{
-            darkThemeMenuItem.isEnabled = false
-        }
     }
 
     override func windowDidLoad() {
         super.windowDidLoad()
         textViewEditor.font = defaultFont
-        if(darkModeEnabled){
-            darkThemeMenuItem.state = .on
-        }
         
         guard let appDelegate = NSApplication.shared.delegate as? AppDelegate else {
              return
+        }
+        if(appDelegate.darkModeEnabled){
+            darkThemeMenuItem.state = .on
         }
         setWordWrap(enabled: appDelegate.wordWrapEnabled)
     }
@@ -205,6 +200,20 @@ class WindowEditorController: NSWindowController, NSWindowDelegate {
     
     @IBAction func viewHelpMenuItemClicked(_ sender: NSMenuItem) {
         NSWorkspace.shared.open(NSURL(string: "https://ganeshh123.github.io/SimpleText/#usage")! as URL)
+    }
+    
+    
+    
+    @IBAction func licenseMenuItemClicked(_ sender: NSMenuItem) {
+        NSWorkspace.shared.open(NSURL(string: "https://github.com/ganeshh123/SimpleText/blob/main/LICENSE.MD")! as URL)
+    }
+    
+    @IBAction func checkForUpdatesmenuItemClicked(_ sender: NSMenuItem) {
+        NSWorkspace.shared.open(NSURL(string: "https://github.com/ganeshh123/SimpleText/releases")! as URL)
+    }
+    
+    @IBAction func reportBugMenuItemClicked(_ sender: NSMenuItem) {
+        NSWorkspace.shared.open(NSURL(string: "https://github.com/ganeshh123/SimpleText/issues")! as URL)
     }
     
     

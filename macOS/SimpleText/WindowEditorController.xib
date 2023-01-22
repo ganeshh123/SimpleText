@@ -25,7 +25,7 @@
                 <rect key="frame" x="0.0" y="0.0" width="640" height="480"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
-                    <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" hasHorizontalScroller="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dbQ-BV-ZZX">
+                    <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" translatesAutoresizingMaskIntoConstraints="NO" id="dbQ-BV-ZZX">
                         <rect key="frame" x="10" y="10" width="620" height="460"/>
                         <clipView key="contentView" drawsBackground="NO" id="u0w-xt-oq2">
                             <rect key="frame" x="0.0" y="0.0" width="620" height="460"/>
@@ -42,8 +42,8 @@
                                 </textView>
                             </subviews>
                         </clipView>
-                        <scroller key="horizontalScroller" hidden="YES" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="tlB-B2-7Ua">
-                            <rect key="frame" x="-100" y="-100" width="240" height="16"/>
+                        <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="tlB-B2-7Ua">
+                            <rect key="frame" x="0.0" y="444" width="620" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="ZF0-yO-ma7">
@@ -159,7 +159,16 @@
                 </menuItem>
                 <menuItem title="Format" id="pCD-bE-0EV">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Format" id="G9Z-hG-O2K"/>
+                    <menu key="submenu" title="Format" id="G9Z-hG-O2K">
+                        <items>
+                            <menuItem title="Word Wrap" state="on" id="VnO-Zb-7iw">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="wordWrapMenuItemClicked:" target="-2" id="AYV-VA-qez"/>
+                                </connections>
+                            </menuItem>
+                        </items>
+                    </menu>
                 </menuItem>
                 <menuItem title="View" id="XMD-2y-rPL">
                     <modifierMask key="keyEquivalentModifierMask"/>

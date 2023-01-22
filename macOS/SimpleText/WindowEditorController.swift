@@ -34,6 +34,11 @@ class WindowEditorController: NSWindowController, NSWindowDelegate {
         if(darkModeEnabled){
             darkThemeMenuItem.state = .on
         }
+        
+        guard let appDelegate = NSApplication.shared.delegate as? AppDelegate else {
+             return
+        }
+        setWordWrap(enabled: appDelegate.wordWrapEnabled)
     }
     
     /* Get/Set Functions */
@@ -78,6 +83,20 @@ class WindowEditorController: NSWindowController, NSWindowDelegate {
             try fileContent.write(to: file, atomically: true, encoding: String.Encoding.utf8)
         }catch{
             assertionFailure("An error occured saving the file \(file.path) : \(error)")
+        }
+    }
+    
+    func setWordWrap(enabled: Bool){
+        if(enabled){
+            textViewEditor.textContainer?.widthTracksTextView = true
+            let restoreSize: CGSize = textViewEditor.enclosingScrollView!.contentSize
+            textViewEditor.textContainer?.containerSize = CGSize(width: restoreSize.width, height: (textViewEditor.textContainer?.containerSize.height)!)
+            
+        }else{
+            textViewEditor.maxSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: CGFloat.greatestFiniteMagnitude)
+            textViewEditor.isHorizontallyResizable = true
+            textViewEditor.textContainer?.widthTracksTextView = false
+            textViewEditor.textContainer?.containerSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: (textViewEditor.textContainer?.containerSize.height)!)
         }
     }
     
@@ -141,6 +160,21 @@ class WindowEditorController: NSWindowController, NSWindowDelegate {
         writeFile(file: result!)
         readFile(file: result!)
     }
+    
+    @IBAction func wordWrapMenuItemClicked(_ sender: NSMenuItem) {
+        guard let appDelegate = NSApplication.shared.delegate as? AppDelegate else {
+             return
+        }
+        let enableWordWrap: Bool =  !appDelegate.wordWrapEnabled
+        appDelegate.setEditorWordWrap(enabled: enableWordWrap)
+        
+        if(enableWordWrap){
+            sender.state = .on
+        }else{
+            sender.state = .off
+        }
+    }
+    
     
     @IBAction func zoomInMenuItemClicked(_ sender: NSMenuItem) {
         textViewEditor.font = NSFont(name: textViewEditor.font!.fontName, size: textViewEditor.font!.pointSize + 1)

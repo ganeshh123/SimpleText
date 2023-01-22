@@ -11,6 +11,9 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     var openWindows = [String : WindowEditorController]()
+    
+    // Application level settings
+    var wordWrapEnabled: Bool = true
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Remove annoying forced help menu customization
@@ -38,6 +41,14 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func removeWindowEditor(windowId: UUID){
         openWindows.removeValue(forKey: windowId.uuidString)
+    }
+    
+    /* Setting Apply to All Windows */
+    func setEditorWordWrap(enabled: Bool){
+        wordWrapEnabled = enabled
+        for wE in openWindows.values{
+            wE.setWordWrap(enabled: enabled)
+        }
     }
     
     /* App Menu Events */

@@ -165,7 +165,7 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="View" id="leT-W4-erP">
                         <items>
-                            <menuItem title="Zoom In" keyEquivalent="=" id="O6D-Pm-G3y">
+                            <menuItem title="Zoom In" keyEquivalent="+" id="O6D-Pm-G3y">
                                 <connections>
                                     <action selector="zoomInMenuItemClicked:" target="-2" id="A6z-k8-Mqu"/>
                                 </connections>
@@ -186,23 +186,21 @@
                                     <action selector="darkThemeMenuItemClicked:" target="-2" id="oVS-Ol-yrY"/>
                                 </connections>
                             </menuItem>
+                            <menuItem isSeparatorItem="YES" id="9Du-9H-vZL"/>
                         </items>
                     </menu>
                 </menuItem>
-                <menuItem title="Help" id="N1M-q0-8tO">
+                <menuItem title="Help " id="fTV-Dp-YmF">
                     <modifierMask key="keyEquivalentModifierMask"/>
-                    <menu key="submenu" title="Help" systemMenu="help" id="yEE-kg-OG2">
+                    <menu key="submenu" title="Help " id="4n3-jK-LEg">
                         <items>
-                            <menuItem title="SimpleText Help" keyEquivalent="?" id="kni-H6-NHM">
+                            <menuItem title="View Help" keyEquivalent="?" id="uqd-OR-24L">
                                 <connections>
-                                    <action selector="showHelp:" target="-1" id="pX4-i9-xSO"/>
+                                    <action selector="viewHelpMenuItemClicked:" target="-2" id="bLn-iK-ehY"/>
                                 </connections>
                             </menuItem>
                         </items>
                     </menu>
-                </menuItem>
-                <menuItem title="Font" id="zE7-k4-ojX">
-                    <modifierMask key="keyEquivalentModifierMask"/>
                 </menuItem>
             </items>
             <point key="canvasLocation" x="200" y="121"/>

@@ -169,5 +169,9 @@ class WindowEditorController: NSWindowController, NSWindowDelegate {
         }
     }
     
+    @IBAction func viewHelpMenuItemClicked(_ sender: NSMenuItem) {
+        NSWorkspace.shared.open(NSURL(string: "https://ganeshh123.github.io/SimpleText/#usage")! as URL)
+    }
+    
     
 }

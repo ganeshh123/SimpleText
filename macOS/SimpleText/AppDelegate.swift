@@ -13,6 +13,10 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     var openWindows = [String : WindowEditorController]()
 
     func applicationDidFinishLaunching(_ aNotification: Notification) {
+        // Remove annoying forced help menu customization
+        let unusedMenu: NSMenu = NSMenu(title: "Help")
+        NSApplication.shared.helpMenu = unusedMenu
+        
         createWindowEditor()
     }
 

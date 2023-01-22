@@ -31,7 +31,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="605" height="445"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textView identifier="TextViewEditor" focusRingType="none" importsGraphics="NO" richText="NO" verticallyResizable="YES" findStyle="bar" allowsUndo="YES" spellingCorrection="YES" smartInsertDelete="YES" id="l4o-vs-4eV">
+                                <textView identifier="TextViewEditor" focusRingType="none" importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="bar" allowsUndo="YES" spellingCorrection="YES" smartInsertDelete="YES" id="l4o-vs-4eV">
                                     <rect key="frame" x="0.0" y="0.0" width="605" height="445"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
@@ -180,6 +180,12 @@
                     <modifierMask key="keyEquivalentModifierMask"/>
                     <menu key="submenu" title="Format" id="G9Z-hG-O2K">
                         <items>
+                            <menuItem title="Font..." id="zxr-Qw-0GM">
+                                <modifierMask key="keyEquivalentModifierMask"/>
+                                <connections>
+                                    <action selector="fontMenuItemClicked:" target="-2" id="f5P-hw-MSc"/>
+                                </connections>
+                            </menuItem>
                             <menuItem title="Word Wrap" state="on" id="VnO-Zb-7iw">
                                 <modifierMask key="keyEquivalentModifierMask"/>
                                 <connections>

@@ -14,6 +14,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // Application level settings
     var darkModeEnabled: Bool = false
     var wordWrapEnabled: Bool = true
+    let defaultFont: NSFont? = NSFont(name: "Courier New", size: 18)
+    
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
         // Remove annoying forced help menu customization
@@ -53,6 +55,11 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         for wE in openWindows.values{
             wE.setWordWrap(enabled: enabled)
         }
+    }
+    
+    func showFontPanel(currentFont: NSFont?){
+        NSFontPanel.shared.setPanelFont(currentFont ?? defaultFont!, isMultiple: false)
+        NSFontPanel.shared.makeKeyAndOrderFront(self)
     }
     
     /* App Menu Events */

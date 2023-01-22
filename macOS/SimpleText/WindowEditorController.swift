@@ -10,7 +10,6 @@ import Cocoa
 class WindowEditorController: NSWindowController, NSWindowDelegate {
     
     private let windowId: UUID = UUID()
-    private let defaultFont: NSFont? = NSFont(name: "Courier New", size: 18)
     private var openedFile: URL? = nil
     private var openedFileInitialText: String = ""
     private var fileModified: Bool = false
@@ -25,7 +24,6 @@ class WindowEditorController: NSWindowController, NSWindowDelegate {
 
     override func windowDidLoad() {
         super.windowDidLoad()
-        textViewEditor.font = defaultFont
         
         guard let appDelegate = NSApplication.shared.delegate as? AppDelegate else {
              return
@@ -34,6 +32,7 @@ class WindowEditorController: NSWindowController, NSWindowDelegate {
             darkThemeMenuItem.state = .on
         }
         setWordWrap(enabled: appDelegate.wordWrapEnabled)
+        setTextFont(newFont: appDelegate.defaultFont!)
     }
     
     /* Get/Set Functions */
@@ -93,6 +92,10 @@ class WindowEditorController: NSWindowController, NSWindowDelegate {
             textViewEditor.textContainer?.widthTracksTextView = false
             textViewEditor.textContainer?.containerSize = CGSize(width: CGFloat.greatestFiniteMagnitude, height: (textViewEditor.textContainer?.containerSize.height)!)
         }
+    }
+    
+    func setTextFont(newFont: NSFont){
+        textViewEditor?.font = newFont
     }
     
     /* Menu Button Events */
@@ -156,6 +159,14 @@ class WindowEditorController: NSWindowController, NSWindowDelegate {
         readFile(file: result!)
     }
     
+    @IBAction func fontMenuItemClicked(_ sender: NSMenuItem) {
+        guard let appDelegate = NSApplication.shared.delegate as? AppDelegate else {
+             return
+        }
+        appDelegate.showFontPanel(currentFont: textViewEditor.font)
+    }
+    
+    
     @IBAction func wordWrapMenuItemClicked(_ sender: NSMenuItem) {
         guard let appDelegate = NSApplication.shared.delegate as? AppDelegate else {
              return
@@ -180,7 +191,10 @@ class WindowEditorController: NSWindowController, NSWindowDelegate {
     }
     
     @IBAction func resetZoomMenuItemClicked(_ sender: Any) {
-        textViewEditor.font = NSFont(name: textViewEditor.font!.fontName, size: defaultFont!.pointSize)
+        guard let appDelegate = NSApplication.shared.delegate as? AppDelegate else {
+             return
+        }
+        textViewEditor.font = NSFont(name: textViewEditor.font!.fontName, size: appDelegate.defaultFont!.pointSize)
     }
     
     @IBAction func darkThemeMenuItemClicked(_ sender: NSMenuItem) {

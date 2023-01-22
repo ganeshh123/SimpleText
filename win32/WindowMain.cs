@@ -447,14 +447,15 @@ namespace SimpleText
 
         private void QuitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            foreach (var proc in Process.GetProcesses())
+            Program.closeAllWindows();
+            /*foreach (var proc in Process.GetProcesses())
             {
                 // Check process list and set close window commands to any other instances
                 if (proc.ProcessName == "SimpleText")
                 {
                     proc.CloseMainWindow();
                 }
-            }
+            }*/
         }
     }
 }

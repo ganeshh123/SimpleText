@@ -50,6 +50,14 @@ namespace SimpleText
             }
         }
 
+        public static void closeAllWindows()
+        {
+            foreach (var oW in openWindows.ToList())
+            {
+                oW.Value.Close();
+            }
+        }
+
 
         // Shared Settings
         public static void setEdtiorWordWrap(bool enabled)

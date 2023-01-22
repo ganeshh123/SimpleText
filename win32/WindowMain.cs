@@ -120,6 +120,20 @@ namespace SimpleText
             }
         }
 
+        internal void setWordWrap(bool enabled)
+        {
+            textBoxEditor.WordWrap = enabled;
+            wordWrapToolStripMenuItem.Checked = enabled;
+            if (enabled)
+            {
+                textBoxEditor.ScrollBars = ScrollBars.Vertical;
+            }
+            else
+            {
+                textBoxEditor.ScrollBars = ScrollBars.Both;
+            }
+        }
+
         private void SwitchTheme(ColorTheme chosenTheme)
         {
             bool isDark = chosenTheme == ColorTheme.Dark;
@@ -391,15 +405,7 @@ namespace SimpleText
         {
             bool enableWordWrap = !wordWrapToolStripMenuItem.Checked;
             textBoxEditor.WordWrap = enableWordWrap;
-            wordWrapToolStripMenuItem.Checked = enableWordWrap;
-            if (enableWordWrap)
-            {
-                textBoxEditor.ScrollBars = ScrollBars.Vertical;
-            }
-            else
-            {
-                textBoxEditor.ScrollBars = ScrollBars.Both;
-            }
+            Program.setEdtiorWordWrap(enableWordWrap);
         }
 
         private void ZoomInToolStripMenuItem_Click(object sender, EventArgs e)

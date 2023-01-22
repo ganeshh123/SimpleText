@@ -29,6 +29,8 @@ namespace SimpleText
             Application.Run();
         }
 
+        // Window Create/Remove
+
         public static void createWindowEditor()
         {
             WindowEditor newWindowEditor= new WindowEditor();
@@ -42,6 +44,21 @@ namespace SimpleText
         public static void removeWindowEditor(string windowId)
         {
             openWindows.Remove(windowId);
+            if(openWindows.Count < 1)
+            {
+                Application.Exit();
+            }
         }
+
+
+        // Shared Settings
+        public static void setEdtiorWordWrap(bool enabled)
+        {
+            foreach(var oW in openWindows)
+            {
+                oW.Value.setWordWrap(enabled);
+            }
+        }
+
     }
 }

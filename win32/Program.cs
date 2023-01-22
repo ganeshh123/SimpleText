@@ -11,7 +11,10 @@ namespace SimpleText
     internal static class Program
     {
 
+        // Container for managing open windows
         static IDictionary<string, WindowEditor> openWindows = new Dictionary<string, WindowEditor>();
+
+        // Shared setting flags
         internal static bool darkModeEnabled = (int) Registry.GetValue("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "AppsUseLightTheme", "1") == 0;
         internal static bool wordWrapEnabled = true;
 
@@ -29,7 +32,7 @@ namespace SimpleText
             Application.Run();
         }
 
-        // Window Create/Remove
+        // Window creation and close functions
 
         public static void createWindowEditor()
         {
@@ -59,7 +62,8 @@ namespace SimpleText
         }
 
 
-        // Shared Settings
+        // Toggles for shared settings
+
         public static void setEdtiorWordWrap(bool enabled)
         {
             wordWrapEnabled = enabled;

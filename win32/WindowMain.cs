@@ -31,6 +31,8 @@ namespace SimpleText
         {
             InitializeComponent();
             this.Text = $"New File - SimpleText";
+
+            // Set shared settings
             setDarkTheme(Program.darkModeEnabled);
             setWordWrap(Program.wordWrapEnabled);
 
@@ -79,6 +81,7 @@ namespace SimpleText
             fileToSave.Close();
         }
 
+        // Text modification events
         private void UpdateFileModified()
         {
             fileModified = !String.Equals(textBoxEditor.Text, openFileInitialText);
@@ -111,10 +114,10 @@ namespace SimpleText
             }
         }
 
+        // Set functions for shared settings
         internal void setWordWrap(bool enabled)
         {
             textBoxEditor.WordWrap = enabled;
-            wordWrapToolStripMenuItem.Checked = enabled;
             if (enabled)
             {
                 textBoxEditor.ScrollBars = ScrollBars.Vertical;
@@ -123,11 +126,12 @@ namespace SimpleText
             {
                 textBoxEditor.ScrollBars = ScrollBars.Both;
             }
+            wordWrapToolStripMenuItem.Checked = enabled;
         }
 
         internal void setDarkTheme(bool enabled)
         {
-            darkThemeToolStripMenuItem.Checked = enabled;
+            // Select FG and BG Colors
             if (enabled)
             {
                 fgColor = Color.FromArgb(195, 204, 219);
@@ -139,12 +143,12 @@ namespace SimpleText
                 bgColor = Color.White;
             }
 
+            // Recolor UI elements
             foreach (TextBox tb in this.Controls.OfType<TextBox>())
             {
                 tb.BackColor = bgColor;
                 tb.ForeColor = fgColor;
             }
-
             foreach (MenuStrip mS in this.Controls.OfType<MenuStrip>())
             {
                 mS.BackColor = bgColor;
@@ -185,8 +189,10 @@ namespace SimpleText
                     sectionMenu.DropDownClosed += menuItemHoverColorReset;
                 }
             }
+            darkThemeToolStripMenuItem.Checked = enabled;
         }
 
+        // Utility Functions
         private void TextBoxCursorToEnd()
         {
             textBoxEditor.SelectionStart = textBoxEditor.Text.Length;

@@ -14,12 +14,6 @@ namespace SimpleText
     public partial class WindowEditor : Form
     {
 
-        enum ColorTheme
-        {
-            Light,
-            Dark
-        }
-
         private readonly string windowId = Guid.NewGuid().ToString();
 
         // Data Structures
@@ -29,7 +23,6 @@ namespace SimpleText
         private string openFilePath = null;
         private string openFileInitialText = "";
         private bool fileModified = false;
-        private bool darkThemeEnabled = (int) Registry.GetValue("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "AppsUseLightTheme", "1") == 0;
         public Color fgColor = Color.Black;
         public Color bgColor = Color.White;
 
@@ -38,11 +31,9 @@ namespace SimpleText
         {
             InitializeComponent();
             this.Text = $"New File - SimpleText";
-            if (darkThemeEnabled)
-            {
-                SwitchTheme(ColorTheme.Dark);
-                darkThemeToolStripMenuItem.Checked= true;
-            }
+            setDarkTheme(Program.darkModeEnabled);
+            setWordWrap(Program.wordWrapEnabled);
+
         }
 
         // Get/Set Functions
@@ -134,12 +125,10 @@ namespace SimpleText
             }
         }
 
-        private void SwitchTheme(ColorTheme chosenTheme)
+        internal void setDarkTheme(bool enabled)
         {
-            bool isDark = chosenTheme == ColorTheme.Dark;
-            darkThemeEnabled = isDark;
-
-            if (isDark)
+            darkThemeToolStripMenuItem.Checked = enabled;
+            if (enabled)
             {
                 fgColor = Color.FromArgb(195, 204, 219);
                 bgColor = Color.FromArgb(40, 44, 52);
@@ -168,7 +157,7 @@ namespace SimpleText
 
                     void menuItemHoverColorChange(object sender, EventArgs e)
                     {
-                        if (darkThemeEnabled == false)
+                        if (Program.darkModeEnabled == false)
                         {
                             return;
                         }
@@ -426,16 +415,7 @@ namespace SimpleText
         private void DarkThemeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool enableDarkTheme = !darkThemeToolStripMenuItem.Checked;
-            darkThemeToolStripMenuItem.Checked = enableDarkTheme;
-
-            if (enableDarkTheme)
-            {
-                SwitchTheme(ColorTheme.Dark);
-            }
-            else
-            {
-                SwitchTheme(ColorTheme.Light);
-            }
+            Program.setEditorDarkMode(enableDarkTheme);
         }
 
         private void ViewHelpToolStripMenuItem_Click(object sender, EventArgs e)

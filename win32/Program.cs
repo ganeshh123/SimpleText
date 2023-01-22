@@ -12,8 +12,8 @@ namespace SimpleText
     {
 
         static IDictionary<string, WindowEditor> openWindows = new Dictionary<string, WindowEditor>();
-        static bool darkModeEnabled = (int) Registry.GetValue("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "AppsUseLightTheme", "1") == 0;
-        static bool wordWrapEnabled = true;
+        internal static bool darkModeEnabled = (int) Registry.GetValue("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "AppsUseLightTheme", "1") == 0;
+        internal static bool wordWrapEnabled = true;
 
         /// <summary>
         /// The main entry point for the application.
@@ -54,9 +54,19 @@ namespace SimpleText
         // Shared Settings
         public static void setEdtiorWordWrap(bool enabled)
         {
+            wordWrapEnabled = enabled;
             foreach(var oW in openWindows)
             {
                 oW.Value.setWordWrap(enabled);
+            }
+        }
+
+        public static void setEditorDarkMode(bool enabled)
+        {
+            darkModeEnabled = enabled;
+            foreach (var oW in openWindows)
+            {
+                oW.Value.setDarkTheme(enabled);
             }
         }
 

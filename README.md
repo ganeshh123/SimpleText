@@ -1,20 +1,10 @@
 # SimpleText
 An extremely simple plain text editor.
-
+![simpletext-cover](docs/img_cover.png)
 - [Download](#download)
 - [System Requirements](#system-requirements)
-	- [Windows](#windows)
 - [Usage](#usage)
-	- [Launching the Application](#launching-the-application)
-	- [Interface](#interface)
-	- [App Menu](#app-menu)
-	- [File Menu](#file-menu)
-	- [Edit Menu](#edit-menu)
-	- [Format Menu](#format-menu)
-	- [View Menu](#view-menu)
-	- [Help Menu](#help-menu)
 - [Building](#building)
-	- [Windows - 32 Bit](#windows---32-bit)
 - [Credits](#credits)
 
 ## Download
@@ -27,6 +17,9 @@ An extremely simple plain text editor.
  - Windows 7, Windows 8, Windows 10 (excluding Windows 10 S), or Windows 11 .
  - Windows Vista or Windows XP with [Microsoft .NET Framework 3.5](https://www.microsoft.com/en-gb/download/details.aspx?id=21) installed.
 
+### macOS
+- OSX 10.9 Mavericks or later
+- macOS 10.12 Sierra or later
  
 ## Usage
 ### Launching the Application
@@ -34,10 +27,14 @@ An extremely simple plain text editor.
  - **Windows**: `SimpleText.exe`
 ### Interface
 The user interface consists of three parts - the title bar, the menu bar, and the editor:
-![user-interface](docs/img_usage_interface.jpg)  
+
+**Windows**:
+![user-interface-windows](docs/img_usage_interface_windows.jpg) 
+**macOS**:
+ ![user-interface-mac](docs/img_usage_interface_mac.jpg) 
 
 - **Title Bar** - The title bar at the top of the window provides the standard options to minimize, change the size, and close the application window. If an existing file has been opened in the application, it's name is shown in the title bar.
-- **Menu Bar** - The menu bar is used to carry out various operations to the document, separated into six sections. Keyboard shortcuts to perform the options are shown in the option's button (if applicable).
+- **Menu Bar** - The menu bar is used to carry out various operations to the document, separated into six sections. In Windows, the menu bar is located at the top of each window, while in macOS the menu bar is located at the top of the screen. Keyboard shortcuts to perform the options are shown in the option's button (if applicable).
 - **Editor** - The editor is where text information can be written or edited. Just click inside it and start writing.
 	- The cursor (blinking line) indicates the position at which new characters will be inserted.
 	- A selection can be made to perform operations to specific text in the editor. To select some text, click the mouse down, drag over it and release the mouse. Selected text will be highlighted in blue. To cancel the selection, click in the editor outside the highlighted area.
@@ -85,7 +82,7 @@ The "View" menu provides options to configure the display of the application:
 - **Zoom In** - Increases the size of text in the editor.
 - **Zoom Out** - Decreases the size of text in the editor.
 - **Reset Zoom** - Sets the size of the text in the editor to the default value.
-- **Dark Background** - Applies a dark background to the program. This option is enabled by default if your Operating System is set to use the Dark Theme.
+- **Dark Background** - Applies a dark background to the program. This option is enabled by default if your Operating System is set to use the Dark Theme. This option only works on macOS 10.14 Mojave or later.
 
 ### Help Menu
 The "Help" menu has only one option:
@@ -103,6 +100,17 @@ The "Help" menu has only one option:
 6. Open the "Build" menu and choose "Build Solution":
 	![visual-studio-modules](docs/img_building_win32_vs_build_menu.jpg)
 7. Once the build is completed, the executable can be found at `win32/bin/Release/SimpleText.exe` in the project folder.
+
+### macOS
+1. Download the source code as a zip and extract, or clone the repository.
+2. Install [Xcode](https://xcodereleases.com/) on a macOS machine.
+3. Open `macOS/SimpleText.xcodeproj` from the project folder in Xcode.
+4. Open the "Product" menu and choose "Archive":
+	![xcode-product-menu](docs/img_building_macOS_xcode_product_menu.jpg)
+5. Once building is complete, select the created archive and choose "Distribute App".
+6. Choose "Copy App" and select a location to export the zip file to.
+7. Extract the zip file to find the executable `SimpleText.app`.
+
 
 ## Credits
 Icon by [Joseph Hutchinson](https://github.com/jwhutchinson)

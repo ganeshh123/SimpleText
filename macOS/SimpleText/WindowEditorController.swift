@@ -7,7 +7,7 @@
 
 import Cocoa
 
-class WindowEditorController: NSWindowController, NSWindowDelegate {
+class WindowEditorController: NSWindowController, NSWindowDelegate, NSTextViewDelegate {
     
     private let windowId: UUID = UUID()
     private var openedFile: URL? = nil
@@ -24,6 +24,7 @@ class WindowEditorController: NSWindowController, NSWindowDelegate {
 
     override func windowDidLoad() {
         super.windowDidLoad()
+        self.window?.title = "New File - Simple Text"
         
         guard let appDelegate = NSApplication.shared.delegate as? AppDelegate else {
              return
@@ -33,6 +34,8 @@ class WindowEditorController: NSWindowController, NSWindowDelegate {
         }
         setWordWrap(enabled: appDelegate.wordWrapEnabled)
         setTextFont(newFont: appDelegate.defaultFont!)
+        
+        textViewEditor.delegate = self
     }
     
     /* Get/Set Functions */
@@ -68,6 +71,7 @@ class WindowEditorController: NSWindowController, NSWindowDelegate {
         fileModified = false
         
         textViewEditor.string = fileContent
+        updateFileModified()
     }
     
     func writeFile(file: URL){
@@ -77,6 +81,17 @@ class WindowEditorController: NSWindowController, NSWindowDelegate {
             try fileContent.write(to: file, atomically: true, encoding: String.Encoding.utf8)
         }catch{
             assertionFailure("An error occured saving the file \(file.path) : \(error)")
+        }
+    }
+    
+    func updateFileModified(){
+        let fileModified: Bool = textViewEditor.string != openedFileInitialText
+        if(fileModified){
+            if(openedFile != nil){
+                self.window?.title = "\(openedFile!.lastPathComponent)* - SimpleText"
+            }
+        }else if(((self.window?.title.contains("*")) != nil) && openedFile != nil){
+            self.window?.title = "\(openedFile!.lastPathComponent) - SimpleText"
         }
     }
     
@@ -96,6 +111,11 @@ class WindowEditorController: NSWindowController, NSWindowDelegate {
     
     func setTextFont(newFont: NSFont){
         textViewEditor?.font = newFont
+    }
+    
+    // NSTextViewDelegate conforms to NSTextDelegate
+    func textDidChange(_ notification: Notification) {
+        updateFileModified()
     }
     
     /* Menu Button Events */

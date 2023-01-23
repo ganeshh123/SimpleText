@@ -29,10 +29,11 @@ An extremely simple plain text editor.
 ### Interface
 The user interface consists of three parts - the title bar, the menu bar, and the editor:
 
-**Windows:**
-![user-interface-windows](docs/img_usage_interface_windows.jpg) 
-**macOS:**
- ![user-interface-mac](docs/img_usage_interface_mac.jpg) 
+**Windows:**  
+![user-interface-windows](docs/img_usage_interface_windows.jpg)  
+
+**macOS:**  
+![user-interface-mac](docs/img_usage_interface_mac.jpg) 
 
 - **Title Bar** - The title bar at the top of the window provides the standard options to minimize, change the size, and close the application window. If an existing file has been opened in the application, it's name is shown in the title bar.
 - **Menu Bar** - The menu bar is used to carry out various operations to the document, separated into six sections. In Windows, the menu bar is located at the top of each window, while in macOS the menu bar is located at the top of the screen. Keyboard shortcuts to perform the options are shown in the option's button (if applicable).
@@ -93,12 +94,12 @@ The "Help" menu has only one option:
 ## Building
 ### Windows - 32 Bit
 1. Download the source code as a zip and extract, or clone the repository.
-2. Install [Visual Studio](https://visualstudio.microsoft.com/vs/community/) on a Windows machine, with the ".NET desktop development" workflow:  
+2. Install [Visual Studio](https://visualstudio.microsoft.com/vs/community/) on a Windows machine, with the ".NET desktop development" workflow:   
 	![visual-studio-modules](docs/img_building_win32_vs_modules.jpg)
 4. Open `win32/SimpleText.sln` from the project folder in Visual Studio.
-5. Choose "Release" in the target configuration:
+5. Choose "Release" in the target configuration:  
 	![visual-studio-modules](docs/img_building_win32_vs_target.jpg)
-6. Open the "Build" menu and choose "Build Solution":
+6. Open the "Build" menu and choose "Build Solution":  
 	![visual-studio-modules](docs/img_building_win32_vs_build_menu.jpg)
 7. Once the build is completed, the executable can be found at `win32/bin/Release/SimpleText.exe` in the project folder.
 
@@ -106,7 +107,7 @@ The "Help" menu has only one option:
 1. Download the source code as a zip and extract, or clone the repository.
 2. Install [Xcode](https://xcodereleases.com/) on a macOS machine.
 3. Open `macOS/SimpleText.xcodeproj` from the project folder in Xcode.
-4. Open the "Product" menu and choose "Archive":
+4. Open the "Product" menu and choose "Archive":  
 	![xcode-product-menu](docs/img_building_macOS_xcode_product_menu.jpg)
 5. Once building is complete, select the created archive and choose "Distribute App".
 6. Choose "Copy App" and select a location to export the zip file to.

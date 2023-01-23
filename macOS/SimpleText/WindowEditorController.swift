@@ -44,8 +44,32 @@ class WindowEditorController: NSWindowController, NSWindowDelegate, NSTextViewDe
         return windowId
     }
     
+    func getFileModified() -> Bool{
+        return fileModified
+    }
+    
     
     /* Window Events */
+    
+    func windowShouldClose(_ sender: NSWindow) -> Bool {
+        if(fileModified == true){
+            let fileName: String = openedFile?.lastPathComponent ?? "New File"
+            
+            let saveFileCheck = NSAlert()
+            saveFileCheck.messageText = "Would you like to save changes to \(fileName)?"
+            saveFileCheck.addButton(withTitle: "Yes")
+            saveFileCheck.addButton(withTitle: "No")
+            saveFileCheck.alertStyle = .informational
+            
+            let saveRequested: Bool = saveFileCheck.runModal() == .alertFirstButtonReturn
+            if(saveRequested){
+                saveMenuItemClicked(nil)
+                self.close()
+            }
+            
+        }
+        return true
+    }
     
     func windowWillClose(_ notification: Notification) {
         guard let appDelegate = NSApplication.shared.delegate as? AppDelegate else {
@@ -85,8 +109,8 @@ class WindowEditorController: NSWindowController, NSWindowDelegate, NSTextViewDe
     }
     
     func updateFileModified(){
-        let fileModified: Bool = textViewEditor.string != openedFileInitialText
-        if(fileModified){
+        fileModified = textViewEditor.string != openedFileInitialText
+        if(fileModified == true){
             if(openedFile != nil){
                 self.window?.title = "\(openedFile!.lastPathComponent)* - SimpleText"
             }
@@ -147,7 +171,7 @@ class WindowEditorController: NSWindowController, NSWindowDelegate, NSTextViewDe
         readFile(file: result!)
     }
     
-    @IBAction func saveMenuItemClicked(_ sender: NSMenuItem) {
+    @IBAction func saveMenuItemClicked(_ sender: NSMenuItem?) {
         if(openedFile == nil){
             saveAsMenuItemClicked(sender)
             return

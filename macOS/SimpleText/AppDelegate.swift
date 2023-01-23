@@ -11,6 +11,7 @@ import Cocoa
 class AppDelegate: NSObject, NSApplicationDelegate {
     
     var openWindows = [String : WindowEditorController]()
+    var quitRequested: Bool = false
     // Application level settings
     var darkModeEnabled: Bool = false
     var wordWrapEnabled: Bool = true
@@ -27,6 +28,17 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         }
         
         createWindowEditor()
+    }
+    
+    func applicationShouldTerminate(_ sender: NSApplication) -> NSApplication.TerminateReply {
+        quitRequested = true
+        for wE in openWindows.values{
+            if(wE.getFileModified() == true){
+                closeAllWindows()
+                return .terminateCancel
+            }
+        }
+        return .terminateNow
     }
 
     func applicationWillTerminate(_ aNotification: Notification) {
@@ -47,6 +59,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     
     func removeWindowEditor(windowId: UUID){
         openWindows.removeValue(forKey: windowId.uuidString)
+        if(openWindows.count < 1 && quitRequested == true){
+            NSApplication.shared.terminate(nil)
+        }
+    }
+    
+    func closeAllWindows(){
+        for wE in openWindows.values{
+            wE.window?.performClose(nil)
+        }
     }
     
     /* Setting Apply to All Windows */

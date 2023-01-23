@@ -14,36 +14,17 @@
 <body>
     <h1 id="simpletext">SimpleText</h1>
     <p>An extremely simple plain text editor.</p>
+    <figure><img src="img_cover.png" alt="simpletext-cover"></figure>
     <ul>
         <li><a href="#download">Download</a></li>
-        <li><a href="#system-requirements">System Requirements</a>
-            <ul>
-                <li><a href="#windows">Windows</a></li>
-            </ul>
-        </li>
-        <li><a href="#usage">Usage</a>
-            <ul>
-                <li><a href="#launching-the-application">Launching the Application</a></li>
-                <li><a href="#interface">Interface</a></li>
-                <li><a href="#app-menu">App Menu</a></li>
-                <li><a href="#file-menu">File Menu</a></li>
-                <li><a href="#edit-menu">Edit Menu</a></li>
-                <li><a href="#format-menu">Format Menu</a></li>
-                <li><a href="#view-menu">View Menu</a></li>
-                <li><a href="#help-menu">Help Menu</a></li>
-            </ul>
-        </li>
-        <li><a href="#building">Building</a>
-            <ul>
-                <li><a href="#windows---32-bit">Windows - 32 Bit</a></li>
-            </ul>
-        </li>
+        <li><a href="#system-requirements">System Requirements</a></li>
+        <li><a href="#usage">Usage</a></li>
+        <li><a href="#building">Building</a></li>
         <li><a href="#credits">Credits</a></li>
     </ul>
     <h2 id="download">Download</h2>
     <p>Get the latest download from the releases page:</p>
-    <p><a
-            href="https://github.com/ganeshh123/SimpleText/releases">https://github.com/ganeshh123/SimpleText/releases</a>
+    <p><a href="https://github.com/ganeshh123/SimpleText/releases">https://github.com/ganeshh123/SimpleText/releases</a>
     </p>
     <h2 id="system-requirements">System Requirements</h2>
     <h3 id="windows">Windows</h3>
@@ -53,23 +34,33 @@
                 href="https://www.microsoft.com/en-gb/download/details.aspx?id=21">Microsoft .NET Framework 3.5</a>
             installed.</li>
     </ul>
+    <h3 id="macos">macOS</h3>
+    <ul>
+        <li>OSX 10.9 Mavericks or later</li>
+        <li>macOS 10.12 Sierra or later</li>
+    </ul>
     <h2 id="usage">Usage</h2>
     <h3 id="launching-the-application">Launching the Application</h3>
     <p>Double click on the downloaded program executable file:</p>
     <ul>
         <li><strong>Windows</strong>: <code>SimpleText.exe</code></li>
+        <li><strong>macOS</strong>: <code>SimpleText.app</code></li>
     </ul>
     <h3 id="interface">Interface</h3>
-    <p>The user interface consists of three parts - the title bar, the menu bar, and the editor:
-    <figure><img src="img_usage_interface.jpg" alt="user-interface"></figure>
+    <p>The user interface consists of three parts - the title bar, the menu bar, and the editor:</p>
+    <p><strong>Windows:</strong>
+    <figure><img src="img_usage_interface_windows.jpg" alt="user-interface-windows"></figure>
+    <strong>macOS:</strong>
+    <figure><img src="img_usage_interface_mac.jpg" alt="user-interface-mac"></figure>
     </p>
     <ul>
         <li><strong>Title Bar</strong> - The title bar at the top of the window provides the standard options to
             minimize, change the size, and close the application window. If an existing file has been opened in the
             application, it&rsquo;s name is shown in the title bar.</li>
         <li><strong>Menu Bar</strong> - The menu bar is used to carry out various operations to the document, separated
-            into six sections. Keyboard shortcuts to perform the options are shown in the option&rsquo;s button (if
-            applicable).</li>
+            into six sections. In Windows, the menu bar is located at the top of each window, while in macOS the menu
+            bar is located at the top of the screen. Keyboard shortcuts to perform the options are shown in the
+            option&rsquo;s button (if applicable).</li>
         <li><strong>Editor</strong> - The editor is where text information can be written or edited. Just click inside
             it and start writing.
             <ul>
@@ -143,7 +134,8 @@
         <li><strong>Zoom Out</strong> - Decreases the size of text in the editor.</li>
         <li><strong>Reset Zoom</strong> - Sets the size of the text in the editor to the default value.</li>
         <li><strong>Dark Background</strong> - Applies a dark background to the program. This option is enabled by
-            default if your Operating System is set to use the Dark Theme.</li>
+            default if your Operating System is set to use the Dark Theme. This option only works on macOS 10.14 Mojave
+            or later.</li>
     </ul>
     <h3 id="help-menu">Help Menu</h3>
     <p>The &ldquo;Help&rdquo; menu has only one option:</p>
@@ -153,23 +145,32 @@
     <h2 id="building">Building</h2>
     <h3 id="windows-32-bit">Windows - 32 Bit</h3>
     <ol>
-        <li>Download the <a href="https://github.com/ganeshh123/SimpleText">source code</a> as a zip and extract, or clone the repository.</li>
+        <li>Download the source code as a zip and extract, or clone the repository.</li>
         <li>Install <a href="https://visualstudio.microsoft.com/vs/community/">Visual Studio</a> on a Windows machine,
             with the &ldquo;.NET desktop development&rdquo; workflow:<br>
-            <figure><img src="img_building_win32_vs_modules.jpg" alt="visual-studio-modules">
-            </figure>
+            <figure><img src="img_building_win32_vs_modules.jpg" alt="visual-studio-modules"></figure>
         </li>
         <li>Open <code>win32/SimpleText.sln</code> from the project folder in Visual Studio.</li>
         <li>Choose &ldquo;Release&rdquo; in the target configuration:
-            <figure><img src="img_building_win32_vs_target.jpg" alt="visual-studio-modules">
-            </figure>
+            <figure><img src="img_building_win32_vs_target.jpg" alt="visual-studio-modules"></figure>
         </li>
         <li>Open the &ldquo;Build&rdquo; menu and choose &ldquo;Build Solution&rdquo;:
-            <figure><img src="img_building_win32_vs_build_menu.jpg"
-                    alt="visual-studio-modules"></figure>
+            <figure><img src="img_building_win32_vs_build_menu.jpg" alt="visual-studio-modules"></figure>
         </li>
         <li>Once the build is completed, the executable can be found at <code>win32/bin/Release/SimpleText.exe</code> in
             the project folder.</li>
+    </ol>
+    <h3 id="macos-1">macOS</h3>
+    <ol>
+        <li>Download the source code as a zip and extract, or clone the repository.</li>
+        <li>Install <a href="https://xcodereleases.com/">Xcode</a> on a macOS machine.</li>
+        <li>Open <code>macOS/SimpleText.xcodeproj</code> from the project folder in Xcode.</li>
+        <li>Open the &ldquo;Product&rdquo; menu and choose &ldquo;Archive&rdquo;:
+            <figure><img src="img_building_macOS_xcode_product_menu.jpg" alt="xcode-product-menu"></figure>
+        </li>
+        <li>Once building is complete, select the created archive and choose &ldquo;Distribute App&rdquo;.</li>
+        <li>Choose &ldquo;Copy App&rdquo; and select a location to export the zip file to.</li>
+        <li>Extract the zip file to find the executable <code>SimpleText.app</code>.</li>
     </ol>
     <h2 id="credits">Credits</h2>
     <p>Icon by <a href="https://github.com/jwhutchinson">Joseph Hutchinson</a></p>

@@ -25,12 +25,13 @@ An extremely simple plain text editor.
 ### Launching the Application
  Double click on the downloaded program executable file:
  - **Windows**: `SimpleText.exe`
+ - **macOS**: `SimpleText.app`
 ### Interface
 The user interface consists of three parts - the title bar, the menu bar, and the editor:
 
-**Windows**:
+**Windows:**
 ![user-interface-windows](docs/img_usage_interface_windows.jpg) 
-**macOS**:
+**macOS:**
  ![user-interface-mac](docs/img_usage_interface_mac.jpg) 
 
 - **Title Bar** - The title bar at the top of the window provides the standard options to minimize, change the size, and close the application window. If an existing file has been opened in the application, it's name is shown in the title bar.

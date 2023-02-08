@@ -94,7 +94,7 @@ The "Help" menu has only one option:
 
 ## Building
 ### Windows - 32 Bit
-1. Download the source code as a zip and extract, or clone the repository.
+1. Download the [source code](https://github.com/ganeshh123/SimpleText) as a zip and extract, or clone the repository.
 2. Install [Visual Studio](https://visualstudio.microsoft.com/vs/community/) on a Windows machine, with the ".NET desktop development" workflow:   
 	![visual-studio-modules](docs/img_building_win32_vs_modules.jpg)
 4. Open `win32/SimpleText.sln` from the project folder in Visual Studio.
@@ -105,7 +105,7 @@ The "Help" menu has only one option:
 7. Once the build is completed, the executable can be found at `win32/bin/Release/SimpleText.exe` in the project folder.
 
 ### macOS
-1. Download the source code as a zip and extract, or clone the repository.
+1. Download the [source code](https://github.com/ganeshh123/SimpleText) as a zip and extract, or clone the repository.
 2. Install [Xcode](https://xcodereleases.com/) on a macOS machine.
 3. Open `macOS/SimpleText.xcodeproj` from the project folder in Xcode.
 4. Open the "Product" menu and choose "Archive":  

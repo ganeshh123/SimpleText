@@ -14,8 +14,9 @@ An extremely simple plain text editor.
  
  ## System Requirements
  ### Windows
- - Windows 7, Windows 8, Windows 10 (excluding Windows 10 S), or Windows 11 .
- - Windows Vista or Windows XP with [Microsoft .NET Framework 3.5](https://www.microsoft.com/en-gb/download/details.aspx?id=21) installed.
+ - Windows 10 (1903+), Windows 11.
+ - Windows 7, Windows 8 with [.NET Framework 4.8 Runtime](https://support.microsoft.com/en-us/topic/microsoft-net-framework-4-8-offline-installer-for-windows-9d23f658-3b97-68ab-d013-aa3c3e7495e0) installed
+ - Windows XP (SP2), Windows Vista with [.NET Framework Runtime 3.5](https://www.microsoft.com/en-us/download/confirmation.aspx?id=25150) installed. `SimpleText_WinXP.exe` should be downloaded instead.
 
 ### macOS
 - OSX 10.9 Mavericks or later

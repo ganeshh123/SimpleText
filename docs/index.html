@@ -13,8 +13,9 @@
 
 <body>
     <h1 id="simpletext">SimpleText</h1>
-    <p>An extremely simple plain text editor.</p>
+    <p>An extremely simple plain text editor.
     <figure><img src="img_cover.png" alt="simpletext-cover"></figure>
+    </p>
     <ul>
         <li><a href="#download">Download</a></li>
         <li><a href="#system-requirements">System Requirements</a></li>
@@ -29,10 +30,13 @@
     <h2 id="system-requirements">System Requirements</h2>
     <h3 id="windows">Windows</h3>
     <ul>
-        <li>Windows 7, Windows 8, Windows 10 (excluding Windows 10 S), or Windows 11 .</li>
-        <li>Windows Vista or Windows XP with <a
-                href="https://www.microsoft.com/en-gb/download/details.aspx?id=21">Microsoft .NET Framework 3.5</a>
-            installed.</li>
+        <li>Windows 10 (1903+), Windows 11.</li>
+        <li>Windows 7, Windows 8 with <a
+                href="https://support.microsoft.com/en-us/topic/microsoft-net-framework-4-8-offline-installer-for-windows-9d23f658-3b97-68ab-d013-aa3c3e7495e0">.NET
+                Framework 4.8 Runtime</a> installed</li>
+        <li>Windows XP (SP2), Windows Vista with <a
+                href="https://www.microsoft.com/en-us/download/confirmation.aspx?id=25150">.NET Framework Runtime
+                3.5</a> installed. <code>SimpleText_WinXP.exe</code> should be downloaded instead.</li>
     </ul>
     <h3 id="macos">macOS</h3>
     <ul>
@@ -48,9 +52,10 @@
     </ul>
     <h3 id="interface">Interface</h3>
     <p>The user interface consists of three parts - the title bar, the menu bar, and the editor:</p>
-    <p><strong>Windows:</strong>
+    <p><strong>Windows:</strong><br>
     <figure><img src="img_usage_interface_windows.jpg" alt="user-interface-windows"></figure>
-    <strong>macOS:</strong>
+    </p>
+    <p><strong>macOS:</strong><br>
     <figure><img src="img_usage_interface_mac.jpg" alt="user-interface-mac"></figure>
     </p>
     <ul>
@@ -145,28 +150,34 @@
     <h2 id="building">Building</h2>
     <h3 id="windows-32-bit">Windows - 32 Bit</h3>
     <ol>
-        <li>Download the source code as a zip and extract, or clone the repository.</li>
+        <li>Download the <a href="https://github.com/ganeshh123/SimpleText">source code</a> as a zip and extract, or
+            clone the repository.</li>
         <li>Install <a href="https://visualstudio.microsoft.com/vs/community/">Visual Studio</a> on a Windows machine,
             with the &ldquo;.NET desktop development&rdquo; workflow:<br>
-            <figure><img src="img_building_win32_vs_modules.jpg" alt="visual-studio-modules"></figure>
+            <figure><img src="img_building_win32_vs_modules.jpg" alt="visual-studio-modules">
+            </figure>
         </li>
         <li>Open <code>win32/SimpleText.sln</code> from the project folder in Visual Studio.</li>
-        <li>Choose &ldquo;Release&rdquo; in the target configuration:
-            <figure><img src="img_building_win32_vs_target.jpg" alt="visual-studio-modules"></figure>
+        <li>Choose &ldquo;Release&rdquo; in the target configuration:<br>
+            <figure><img src="img_building_win32_vs_target.jpg" alt="visual-studio-modules">
+            </figure>
         </li>
-        <li>Open the &ldquo;Build&rdquo; menu and choose &ldquo;Build Solution&rdquo;:
-            <figure><img src="img_building_win32_vs_build_menu.jpg" alt="visual-studio-modules"></figure>
+        <li>Open the &ldquo;Build&rdquo; menu and choose &ldquo;Build Solution&rdquo;:<br>
+            <figure><img src="img_building_win32_vs_build_menu.jpg"
+                    alt="visual-studio-modules"></figure>
         </li>
         <li>Once the build is completed, the executable can be found at <code>win32/bin/Release/SimpleText.exe</code> in
             the project folder.</li>
     </ol>
     <h3 id="macos-1">macOS</h3>
     <ol>
-        <li>Download the source code as a zip and extract, or clone the repository.</li>
+        <li>Download the <a href="https://github.com/ganeshh123/SimpleText">source code</a> as a zip and extract, or
+            clone the repository.</li>
         <li>Install <a href="https://xcodereleases.com/">Xcode</a> on a macOS machine.</li>
         <li>Open <code>macOS/SimpleText.xcodeproj</code> from the project folder in Xcode.</li>
-        <li>Open the &ldquo;Product&rdquo; menu and choose &ldquo;Archive&rdquo;:
-            <figure><img src="img_building_macOS_xcode_product_menu.jpg" alt="xcode-product-menu"></figure>
+        <li>Open the &ldquo;Product&rdquo; menu and choose &ldquo;Archive&rdquo;:<br>
+            <figure><img src="img_building_macOS_xcode_product_menu.jpg"
+                    alt="xcode-product-menu"></figure>
         </li>
         <li>Once building is complete, select the created archive and choose &ldquo;Distribute App&rdquo;.</li>
         <li>Choose &ldquo;Copy App&rdquo; and select a location to export the zip file to.</li>

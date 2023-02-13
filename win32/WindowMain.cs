@@ -463,5 +463,11 @@ namespace SimpleText
                 }
             }*/
         }
+
+        //Keyboard Events
+        private void textBoxEditor_KeyUp(object sender, KeyEventArgs e)
+        {
+            
+        }
     }
 }

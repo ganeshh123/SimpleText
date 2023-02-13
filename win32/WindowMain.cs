@@ -223,6 +223,11 @@ namespace SimpleText
                     SaveToolStripMenuItem_Click(sender, e);
                     this.Close();
                 }
+                else
+                {
+                    fileModified= false;
+                    this.Close();
+                }
             }
             Program.removeWindowEditor(this.windowId);
 

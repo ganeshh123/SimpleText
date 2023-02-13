@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Reflection;
 using System.Windows.Forms;
 
 namespace SimpleText
@@ -21,6 +22,13 @@ namespace SimpleText
 
             linkLabelIconDesigner.LinkColor = ownerEditor.fgColor;
 
+            SetAppVersion();
+        }
+
+        private void SetAppVersion()
+        {
+            Version appVersion = Assembly.GetExecutingAssembly().GetName().Version;
+            LabelAppVersion.Text = appVersion.Major + "." + appVersion.Minor + "." + appVersion.Build;
         }
 
         // Events

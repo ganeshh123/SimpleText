@@ -13,6 +13,7 @@
 		1FAA91422979BFE500AA3987 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FAA91402979BFE500AA3987 /* MainMenu.xib */; };
 		1FAA914D2979C3CD00AA3987 /* WindowEditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAA914B2979C3CD00AA3987 /* WindowEditorController.swift */; };
 		1FAA914E2979C3CD00AA3987 /* WindowEditorController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FAA914C2979C3CD00AA3987 /* WindowEditorController.xib */; };
+		1FFA72D2299C07D3004B7A6F /* STTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA72D1299C07D3004B7A6F /* STTextView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -24,6 +25,7 @@
 		1FAA91432979BFE500AA3987 /* SimpleText.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimpleText.entitlements; sourceTree = "<group>"; };
 		1FAA914B2979C3CD00AA3987 /* WindowEditorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowEditorController.swift; sourceTree = "<group>"; };
 		1FAA914C2979C3CD00AA3987 /* WindowEditorController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WindowEditorController.xib; sourceTree = "<group>"; };
+		1FFA72D1299C07D3004B7A6F /* STTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,15 +58,32 @@
 		1FAA913B2979BFE300AA3987 /* SimpleText */ = {
 			isa = PBXGroup;
 			children = (
+				1FFA72D0299C0734004B7A6F /* Windows */,
+				1FFA72CF299C0713004B7A6F /* Components */,
 				1FAA913C2979BFE300AA3987 /* AppDelegate.swift */,
-				1FAA914B2979C3CD00AA3987 /* WindowEditorController.swift */,
-				1FAA914C2979C3CD00AA3987 /* WindowEditorController.xib */,
 				1FAA913E2979BFE500AA3987 /* Assets.xcassets */,
-				1FAA91402979BFE500AA3987 /* MainMenu.xib */,
 				1FAA91432979BFE500AA3987 /* SimpleText.entitlements */,
 				1F5B8DB7297F087200098B6D /* Credits.rtf */,
 			);
 			path = SimpleText;
+			sourceTree = "<group>";
+		};
+		1FFA72CF299C0713004B7A6F /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				1FAA91402979BFE500AA3987 /* MainMenu.xib */,
+				1FFA72D1299C07D3004B7A6F /* STTextView.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		1FFA72D0299C0734004B7A6F /* Windows */ = {
+			isa = PBXGroup;
+			children = (
+				1FAA914B2979C3CD00AA3987 /* WindowEditorController.swift */,
+				1FAA914C2979C3CD00AA3987 /* WindowEditorController.xib */,
+			);
+			path = Windows;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -140,6 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				1FAA914D2979C3CD00AA3987 /* WindowEditorController.swift in Sources */,
+				1FFA72D2299C07D3004B7A6F /* STTextView.swift in Sources */,
 				1FAA913D2979BFE300AA3987 /* AppDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

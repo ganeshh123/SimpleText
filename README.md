@@ -12,7 +12,8 @@ An extremely simple plain text editor.
  
  [https://github.com/ganeshh123/SimpleText/releases](https://github.com/ganeshh123/SimpleText/releases)
  
- ## System Requirements
+ ## System Requirements  
+ 
  ### Windows
  - Windows 10 (1903+), Windows 11.
  - Windows 7, Windows 8 with [.NET Framework 4.8 Runtime](https://support.microsoft.com/en-us/topic/microsoft-net-framework-4-8-offline-installer-for-windows-9d23f658-3b97-68ab-d013-aa3c3e7495e0) installed

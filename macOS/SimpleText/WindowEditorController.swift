@@ -30,6 +30,7 @@ class WindowEditorController: NSWindowController, NSWindowDelegate, NSTextViewDe
              return
         }
         if(appDelegate.darkModeEnabled){
+            darkThemeMenuItem.isEnabled = true
             darkThemeMenuItem.state = .on
         }
         setWordWrap(enabled: appDelegate.wordWrapEnabled)

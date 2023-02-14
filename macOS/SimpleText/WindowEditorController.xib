@@ -19,7 +19,7 @@
             <windowStyleMask key="styleMask" titled="YES" closable="YES" miniaturizable="YES" resizable="YES"/>
             <windowPositionMask key="initialPositionMask" leftStrut="YES" rightStrut="YES" topStrut="YES" bottomStrut="YES"/>
             <rect key="contentRect" x="196" y="240" width="640" height="480"/>
-            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1055"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1280" height="775"/>
             <value key="minSize" type="size" width="400" height="300"/>
             <view key="contentView" id="se5-gp-TjO">
                 <rect key="frame" x="0.0" y="0.0" width="640" height="480"/>
@@ -28,26 +28,26 @@
                     <scrollView borderType="none" horizontalLineScroll="10" horizontalPageScroll="10" verticalLineScroll="10" verticalPageScroll="10" translatesAutoresizingMaskIntoConstraints="NO" id="dbQ-BV-ZZX">
                         <rect key="frame" x="10" y="10" width="620" height="460"/>
                         <clipView key="contentView" drawsBackground="NO" id="u0w-xt-oq2">
-                            <rect key="frame" x="0.0" y="0.0" width="605" height="445"/>
+                            <rect key="frame" x="0.0" y="0.0" width="620" height="460"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
                                 <textView identifier="TextViewEditor" focusRingType="none" importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="bar" allowsUndo="YES" spellingCorrection="YES" smartInsertDelete="YES" id="l4o-vs-4eV">
-                                    <rect key="frame" x="0.0" y="0.0" width="605" height="445"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="620" height="460"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                     <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
-                                    <size key="minSize" width="605" height="445"/>
+                                    <size key="minSize" width="620" height="460"/>
                                     <size key="maxSize" width="640" height="10000000"/>
                                     <color key="insertionPointColor" name="textColor" catalog="System" colorSpace="catalog"/>
                                 </textView>
                             </subviews>
                         </clipView>
                         <scroller key="horizontalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="YES" id="tlB-B2-7Ua">
-                            <rect key="frame" x="0.0" y="445" width="605" height="15"/>
+                            <rect key="frame" x="0.0" y="444" width="620" height="16"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                         <scroller key="verticalScroller" wantsLayer="YES" verticalHuggingPriority="750" horizontal="NO" id="ZF0-yO-ma7">
-                            <rect key="frame" x="605" y="0.0" width="15" height="445"/>
+                            <rect key="frame" x="604" y="0.0" width="16" height="460"/>
                             <autoresizingMask key="autoresizingMask"/>
                         </scroller>
                     </scrollView>
@@ -215,7 +215,7 @@
                                 </connections>
                             </menuItem>
                             <menuItem isSeparatorItem="YES" id="MTF-yX-pDt"/>
-                            <menuItem title="Dark Background" keyEquivalent="l" id="niz-6A-8JC">
+                            <menuItem title="Dark Background" enabled="NO" keyEquivalent="l" id="niz-6A-8JC">
                                 <connections>
                                     <action selector="darkThemeMenuItemClicked:" target="-2" id="oVS-Ol-yrY"/>
                                 </connections>

@@ -12,11 +12,11 @@ An extremely simple plain text editor.
  
  [https://github.com/ganeshh123/SimpleText/releases](https://github.com/ganeshh123/SimpleText/releases)
  
- ## System Requirements
+ ## System Requirements  
+ 
  ### Windows
- - Windows 10 (1903+), Windows 11.
+ - Windows 10 (1903+), Windows 11
  - Windows 7, Windows 8 with [.NET Framework 4.8 Runtime](https://support.microsoft.com/en-us/topic/microsoft-net-framework-4-8-offline-installer-for-windows-9d23f658-3b97-68ab-d013-aa3c3e7495e0) installed
- - Windows XP (SP2), Windows Vista with [.NET Framework Runtime 3.5](https://www.microsoft.com/en-us/download/confirmation.aspx?id=25150) installed. `SimpleText_WinXP.exe` should be downloaded instead.
 
 ### macOS
 - OSX 10.9 Mavericks or later
@@ -93,8 +93,14 @@ The "Help" menu has only one option:
 - **View Help** - Opens the usage instructions for the application in a web browser.
 
 ## Building
+### Source Code
+- Repository: [ganeshh123/SimpleText](https://github.com/ganeshh123/SimpleText/)
+- Zip Download: [SimpleText-main.zip](https://github.com/ganeshh123/SimpleText/archive/refs/heads/main.zip)
+- HTTPS Clone: `https://github.com/ganeshh123/SimpleText.git`
+- SSH Clone: `git@github.com:ganeshh123/SimpleText.git`
+
 ### Windows - 32 Bit
-1. Download the [source code](https://github.com/ganeshh123/SimpleText) as a zip and extract, or clone the repository.
+1. Download the source code as a zip and extract, or clone the repository.
 2. Install [Visual Studio](https://visualstudio.microsoft.com/vs/community/) on a Windows machine, with the ".NET desktop development" workflow:   
 	![visual-studio-modules](docs/img_building_win32_vs_modules.jpg)
 4. Open `win32/SimpleText.sln` from the project folder in Visual Studio.
@@ -105,7 +111,7 @@ The "Help" menu has only one option:
 7. Once the build is completed, the executable can be found at `win32/bin/Release/SimpleText.exe` in the project folder.
 
 ### macOS
-1. Download the [source code](https://github.com/ganeshh123/SimpleText) as a zip and extract, or clone the repository.
+1. Download the source code as a zip and extract, or clone the repository.
 2. Install [Xcode](https://xcodereleases.com/) on a macOS machine.
 3. Open `macOS/SimpleText.xcodeproj` from the project folder in Xcode.
 4. Open the "Product" menu and choose "Archive":  

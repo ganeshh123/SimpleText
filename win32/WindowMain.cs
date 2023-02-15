@@ -36,6 +36,7 @@ namespace SimpleText
             setDarkTheme(Program.darkModeEnabled);
             setWordWrap(Program.wordWrapEnabled);
 
+            Size = new Size(654, 487);
         }
 
         // Get/Set Functions
@@ -272,7 +273,9 @@ namespace SimpleText
                 return;
             }
 
+            Cursor = Cursors.WaitCursor;
             ReadFile(openFile.FileName);
+            Cursor= Cursors.Default;
         }
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)
@@ -284,8 +287,10 @@ namespace SimpleText
                 return;
             }
 
+            Cursor = Cursors.WaitCursor;
             WriteFile(openFilePath);
             ReadFile(openFilePath);
+            Cursor = Cursors.Default;
         }
 
         private void SaveAsToolStripMenuItem_Click(object sender, EventArgs e)

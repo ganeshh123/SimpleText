@@ -1,7 +1,9 @@
 ﻿using Microsoft.Win32;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Diagnostics;
+using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Security.Principal;
@@ -15,12 +17,14 @@ namespace SimpleText
         // Container for managing open windows
         static readonly IDictionary<string, WindowEditor> openWindows = new Dictionary<string, WindowEditor>();
 
-        // Configuration
+        // Classes
         static IniFile appConfig = null;
+        static readonly TypeConverter fontConverter = TypeDescriptor.GetConverter(typeof(Font));
 
         // Shared setting flags
         internal static bool darkModeEnabled = (int) Registry.GetValue("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "AppsUseLightTheme", "1") == 0;
         internal static bool wordWrapEnabled = true;
+        internal static Font editorFont = new Font("Consolas", 12, FontStyle.Regular);
 
         /// <summary>
         /// The main entry point for the application.
@@ -50,6 +54,11 @@ namespace SimpleText
                     string valueStr = appConfig.Read("wordWrapEnabled");
                     wordWrapEnabled = valueStr == "true" || (valueStr != "false" && wordWrapEnabled);
                 }
+                if (appConfig.KeyExists("editorFont"))
+                {
+                    string valueStr = appConfig.Read("editorFont");
+                    editorFont = (Font)fontConverter.ConvertFromString(valueStr);
+                }
             }
             else
             {
@@ -74,7 +83,6 @@ namespace SimpleText
             string newWindowId = newWindowEditor.GetWindowId();
 
             openWindows.Add(newWindowId, newWindowEditor);
-            Debug.WriteLine(newWindowEditor);
             newWindowEditor.Show();
         }
 
@@ -114,6 +122,17 @@ namespace SimpleText
             foreach (var oW in openWindows)
             {
                 oW.Value.SetDarkTheme(enabled);
+            }
+        }
+
+        public static void SetEditorFont(Font selectedFont)
+        {
+            editorFont = selectedFont;
+            string selectedFontString = fontConverter.ConvertToString(editorFont);
+            WriteSetting("editorFont", selectedFontString);
+            foreach (var oW in openWindows)
+            {
+                oW.Value.SetFont(editorFont);
             }
         }
 

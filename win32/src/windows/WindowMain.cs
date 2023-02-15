@@ -35,6 +35,7 @@ namespace SimpleText
             // Set shared settings
             SetDarkTheme(Program.darkModeEnabled);
             SetWordWrap(Program.wordWrapEnabled);
+            SetFont(Program.editorFont);
 
             Size = new Size(654, 487);
         }
@@ -128,6 +129,11 @@ namespace SimpleText
                 textBoxEditor.ScrollBars = ScrollBars.Both;
             }
             wordWrapToolStripMenuItem.Checked = enabled;
+        }
+
+        internal void SetFont(Font selectedFont)
+        {
+            textBoxEditor.Font = selectedFont;
         }
 
         internal void SetDarkTheme(bool enabled)
@@ -402,7 +408,7 @@ namespace SimpleText
             };
             if (fontChooser.ShowDialog() != DialogResult.Cancel)
             {
-                textBoxEditor.Font = fontChooser.Font;
+                Program.SetEditorFont(fontChooser.Font);
             }
         }
 
@@ -464,14 +470,6 @@ namespace SimpleText
         private void QuitToolStripMenuItem_Click(object sender, EventArgs e)
         {
             Program.CloseAllWindows();
-            /*foreach (var proc in Process.GetProcesses())
-            {
-                // Check process list and set close window commands to any other instances
-                if (proc.ProcessName == "SimpleText")
-                {
-                    proc.CloseMainWindow();
-                }
-            }*/
         }
     }
 }

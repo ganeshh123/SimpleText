@@ -33,14 +33,14 @@ namespace SimpleText
             this.Text = $"New File - SimpleText";
 
             // Set shared settings
-            setDarkTheme(Program.darkModeEnabled);
-            setWordWrap(Program.wordWrapEnabled);
+            SetDarkTheme(Program.darkModeEnabled);
+            SetWordWrap(Program.wordWrapEnabled);
 
             Size = new Size(654, 487);
         }
 
         // Get/Set Functions
-        public string getWindowId()
+        public string GetWindowId()
         {
             return windowId;
         }
@@ -116,7 +116,7 @@ namespace SimpleText
         }
 
         // Set functions for shared settings
-        internal void setWordWrap(bool enabled)
+        internal void SetWordWrap(bool enabled)
         {
             textBoxEditor.WordWrap = enabled;
             if (enabled)
@@ -130,7 +130,7 @@ namespace SimpleText
             wordWrapToolStripMenuItem.Checked = enabled;
         }
 
-        internal void setDarkTheme(bool enabled)
+        internal void SetDarkTheme(bool enabled)
         {
             // Select FG and BG Colors
             if (enabled)
@@ -230,7 +230,7 @@ namespace SimpleText
                     this.Close();
                 }
             }
-            Program.removeWindowEditor(this.windowId);
+            Program.RemoveWindowEditor(this.windowId);
 
         }
 
@@ -255,7 +255,7 @@ namespace SimpleText
             /*var info = new System.Diagnostics.ProcessStartInfo(Application.ExecutablePath);
             System.Diagnostics.Process.Start(info);*/
 
-            Program.createWindowEditor();
+            Program.CreateWindowEditor();
         }
 
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
@@ -410,7 +410,7 @@ namespace SimpleText
         {
             bool enableWordWrap = !wordWrapToolStripMenuItem.Checked;
             textBoxEditor.WordWrap = enableWordWrap;
-            Program.setEdtiorWordWrap(enableWordWrap);
+            Program.SetEdtiorWordWrap(enableWordWrap);
         }
 
         private void ZoomInToolStripMenuItem_Click(object sender, EventArgs e)
@@ -431,7 +431,7 @@ namespace SimpleText
         private void DarkThemeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool enableDarkTheme = !darkThemeToolStripMenuItem.Checked;
-            Program.setEditorDarkMode(enableDarkTheme);
+            Program.SetEditorDarkMode(enableDarkTheme);
         }
 
         private void ViewHelpToolStripMenuItem_Click(object sender, EventArgs e)
@@ -463,7 +463,7 @@ namespace SimpleText
 
         private void QuitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Program.closeAllWindows();
+            Program.CloseAllWindows();
             /*foreach (var proc in Process.GetProcesses())
             {
                 // Check process list and set close window commands to any other instances
@@ -472,12 +472,6 @@ namespace SimpleText
                     proc.CloseMainWindow();
                 }
             }*/
-        }
-
-        //Keyboard Events
-        private void textBoxEditor_KeyUp(object sender, KeyEventArgs e)
-        {
-            
         }
     }
 }

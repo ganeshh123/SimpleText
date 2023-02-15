@@ -86,7 +86,7 @@ namespace SimpleText
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
             this.menuStrip1.Padding = new System.Windows.Forms.Padding(2, 0, 0, 2);
-            this.menuStrip1.Size = new System.Drawing.Size(782, 26);
+            this.menuStrip1.Size = new System.Drawing.Size(857, 26);
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -101,7 +101,7 @@ namespace SimpleText
             this.toolStripSeparator2,
             this.quitToolStripMenuItem});
             this.appToolStripMenuItem.Name = "appToolStripMenuItem";
-            this.appToolStripMenuItem.Size = new System.Drawing.Size(96, 24);
+            this.appToolStripMenuItem.Size = new System.Drawing.Size(96, 28);
             this.appToolStripMenuItem.Text = "SimpleText";
             // 
             // aboutToolStripMenuItem
@@ -159,7 +159,7 @@ namespace SimpleText
             this.saveToolStripMenuItem,
             this.saveAsToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 28);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // newToolStripMenuItem
@@ -208,7 +208,7 @@ namespace SimpleText
             this.deleteToolStripMenuItem,
             this.selectAllToolStripMenuItem});
             this.editToolStripMenuItem.Name = "editToolStripMenuItem";
-            this.editToolStripMenuItem.Size = new System.Drawing.Size(49, 24);
+            this.editToolStripMenuItem.Size = new System.Drawing.Size(49, 28);
             this.editToolStripMenuItem.Text = "Edit";
             // 
             // undoToolStripMenuItem
@@ -285,7 +285,7 @@ namespace SimpleText
             this.fontToolStripMenuItem,
             this.wordWrapToolStripMenuItem});
             this.formatToolStripMenuItem.Name = "formatToolStripMenuItem";
-            this.formatToolStripMenuItem.Size = new System.Drawing.Size(70, 24);
+            this.formatToolStripMenuItem.Size = new System.Drawing.Size(70, 28);
             this.formatToolStripMenuItem.Text = "Format";
             // 
             // fontToolStripMenuItem
@@ -313,7 +313,7 @@ namespace SimpleText
             this.toolStripSeparator5,
             this.darkThemeToolStripMenuItem});
             this.viewToolStripMenuItem.Name = "viewToolStripMenuItem";
-            this.viewToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
+            this.viewToolStripMenuItem.Size = new System.Drawing.Size(55, 28);
             this.viewToolStripMenuItem.Text = "View";
             // 
             // zoomInToolStripMenuItem
@@ -358,7 +358,7 @@ namespace SimpleText
             this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.viewHelpToolStripMenuItem});
             this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
-            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 24);
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(55, 28);
             this.helpToolStripMenuItem.Text = "Help";
             // 
             // viewHelpToolStripMenuItem
@@ -383,7 +383,7 @@ namespace SimpleText
             this.textBoxEditor.Multiline = true;
             this.textBoxEditor.Name = "textBoxEditor";
             this.textBoxEditor.ScrollBars = System.Windows.Forms.ScrollBars.Vertical;
-            this.textBoxEditor.Size = new System.Drawing.Size(782, 526);
+            this.textBoxEditor.Size = new System.Drawing.Size(857, 526);
             this.textBoxEditor.TabIndex = 1;
             this.textBoxEditor.TextChanged += new System.EventHandler(this.TextBoxEditor_TextChanged);
             this.textBoxEditor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxEditor_KeyUp);
@@ -397,7 +397,7 @@ namespace SimpleText
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(782, 553);
+            this.ClientSize = new System.Drawing.Size(857, 553);
             this.Controls.Add(this.textBoxEditor);
             this.Controls.Add(this.menuStrip1);
             this.Icon = global::SimpleText.Properties.Resources.SimpleText;

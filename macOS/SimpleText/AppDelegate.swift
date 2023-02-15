@@ -10,6 +10,9 @@ import Cocoa
 @main
 class AppDelegate: NSObject, NSApplicationDelegate {
     
+    let fileManager = FileManager.default
+    var appConfig: IniFile? = nil
+    
     var openWindows = [String : WindowEditorController]()
     var quitRequested: Bool = false
     // Application level settings
@@ -26,6 +29,8 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         if #available(macOS 10.14, *){
             darkModeEnabled = UserDefaults.standard.string(forKey: "AppleInterfaceStyle") == "Dark"
         }
+        
+        loadSettings()
         
         createWindowEditor()
     }
@@ -47,6 +52,34 @@ class AppDelegate: NSObject, NSApplicationDelegate {
 
     func applicationSupportsSecureRestorableState(_ app: NSApplication) -> Bool {
         return true
+    }
+    
+    func loadSettings(){
+        do{
+            let userDataFolder: URL? = fileManager.urls(for: .applicationSupportDirectory, in: .userDomainMask).first?.appendingPathComponent("SimpleText")
+            let configFilePath: URL? = userDataFolder?.appendingPathComponent("SimpleTextSettings.ini")
+            if(configFilePath != nil && fileManager.fileExists(atPath: configFilePath!.path)){
+                
+                appConfig = IniFile(iniPath: configFilePath!.path)
+                
+                if(appConfig == nil){
+                    return
+                }
+                
+                if(appConfig!.read(queryKey: "wordWrapEnabled") != nil){
+                    let valueStr: String = appConfig!.read(queryKey: "wordWrapEnabled")!
+                    wordWrapEnabled = valueStr == "true" || (valueStr != "false" && wordWrapEnabled)
+                }
+                
+            }else{
+                try fileManager.createDirectory(at: userDataFolder!, withIntermediateDirectories: true)
+                try "[SimpleText]".write(to: configFilePath!, atomically: true, encoding: .utf8)
+                print("Created config at: ", configFilePath?.path)
+            }
+        }catch{
+            print("\(error)")
+        }
+        
     }
     
     func createWindowEditor(){
@@ -73,6 +106,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     /* Setting Apply to All Windows */
     func setEditorWordWrap(enabled: Bool){
         wordWrapEnabled = enabled
+        appConfig?.write(keyToStore: "wordWrapEnabled", valueToStore: wordWrapEnabled ? "true" : "false")
         for wE in openWindows.values{
             wE.setWordWrap(enabled: enabled)
         }

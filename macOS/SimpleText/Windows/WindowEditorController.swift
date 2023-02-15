@@ -15,8 +15,9 @@ class WindowEditorController: NSWindowController, NSWindowDelegate, NSTextViewDe
     private var fileModified: Bool = false
     private var darkModeEnabled: Bool = false
     @IBOutlet var textViewEditor: NSTextView!
-    @IBOutlet var darkThemeMenuItem: NSMenuItem!
     
+    @IBOutlet var darkThemeMenuItem: NSMenuItem!
+    @IBOutlet var wordWrapMenuItem: NSMenuItem!
     
     convenience init() {
         self.init(windowNibName: "WindowEditorController")
@@ -34,6 +35,8 @@ class WindowEditorController: NSWindowController, NSWindowDelegate, NSTextViewDe
             darkThemeMenuItem.state = .on
         }
         setWordWrap(enabled: appDelegate.wordWrapEnabled)
+        wordWrapMenuItem.state = appDelegate.wordWrapEnabled ? .on : .off
+        
         setTextFont(newFont: appDelegate.defaultFont!)
         
         textViewEditor.delegate = self

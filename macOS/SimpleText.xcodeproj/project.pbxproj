@@ -13,6 +13,7 @@
 		1FAA91422979BFE500AA3987 /* MainMenu.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FAA91402979BFE500AA3987 /* MainMenu.xib */; };
 		1FAA914D2979C3CD00AA3987 /* WindowEditorController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FAA914B2979C3CD00AA3987 /* WindowEditorController.swift */; };
 		1FAA914E2979C3CD00AA3987 /* WindowEditorController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 1FAA914C2979C3CD00AA3987 /* WindowEditorController.xib */; };
+		1FCD1F38299D5653008E6CD8 /* IniFile.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FCD1F37299D5653008E6CD8 /* IniFile.swift */; };
 		1FFA72D2299C07D3004B7A6F /* STTextView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1FFA72D1299C07D3004B7A6F /* STTextView.swift */; };
 /* End PBXBuildFile section */
 
@@ -25,6 +26,7 @@
 		1FAA91432979BFE500AA3987 /* SimpleText.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = SimpleText.entitlements; sourceTree = "<group>"; };
 		1FAA914B2979C3CD00AA3987 /* WindowEditorController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WindowEditorController.swift; sourceTree = "<group>"; };
 		1FAA914C2979C3CD00AA3987 /* WindowEditorController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = WindowEditorController.xib; sourceTree = "<group>"; };
+		1FCD1F37299D5653008E6CD8 /* IniFile.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IniFile.swift; sourceTree = "<group>"; };
 		1FFA72D1299C07D3004B7A6F /* STTextView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = STTextView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -58,6 +60,7 @@
 		1FAA913B2979BFE300AA3987 /* SimpleText */ = {
 			isa = PBXGroup;
 			children = (
+				1FCD1F36299D5609008E6CD8 /* Utils */,
 				1FFA72D0299C0734004B7A6F /* Windows */,
 				1FFA72CF299C0713004B7A6F /* Components */,
 				1FAA913C2979BFE300AA3987 /* AppDelegate.swift */,
@@ -66,6 +69,14 @@
 				1F5B8DB7297F087200098B6D /* Credits.rtf */,
 			);
 			path = SimpleText;
+			sourceTree = "<group>";
+		};
+		1FCD1F36299D5609008E6CD8 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				1FCD1F37299D5653008E6CD8 /* IniFile.swift */,
+			);
+			path = Utils;
 			sourceTree = "<group>";
 		};
 		1FFA72CF299C0713004B7A6F /* Components */ = {
@@ -158,6 +169,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1FCD1F38299D5653008E6CD8 /* IniFile.swift in Sources */,
 				1FAA914D2979C3CD00AA3987 /* WindowEditorController.swift in Sources */,
 				1FFA72D2299C07D3004B7A6F /* STTextView.swift in Sources */,
 				1FAA913D2979BFE300AA3987 /* AppDelegate.swift in Sources */,
@@ -313,7 +325,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MARKETING_VERSION = 1.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = gn3.SimpleText;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gn3.SimpleText;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -342,7 +354,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.9;
 				MARKETING_VERSION = 1.0.1;
-				PRODUCT_BUNDLE_IDENTIFIER = gn3.SimpleText;
+				PRODUCT_BUNDLE_IDENTIFIER = com.gn3.SimpleText;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

@@ -11,6 +11,7 @@
                 <outlet property="darkThemeMenuItem" destination="niz-6A-8JC" id="GbB-KQ-BUi"/>
                 <outlet property="textViewEditor" destination="l4o-vs-4eV" id="GQv-To-Loh"/>
                 <outlet property="window" destination="F0z-JX-Cv5" id="gIp-Ho-8D9"/>
+                <outlet property="wordWrapMenuItem" destination="VnO-Zb-7iw" id="vnD-8x-CSR"/>
             </connections>
         </customObject>
         <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>

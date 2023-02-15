@@ -386,7 +386,6 @@ namespace SimpleText
             this.textBoxEditor.Size = new System.Drawing.Size(857, 526);
             this.textBoxEditor.TabIndex = 1;
             this.textBoxEditor.TextChanged += new System.EventHandler(this.TextBoxEditor_TextChanged);
-            this.textBoxEditor.KeyUp += new System.Windows.Forms.KeyEventHandler(this.textBoxEditor_KeyUp);
             // 
             // timerStoppedTyping
             // 

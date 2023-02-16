@@ -8,7 +8,7 @@
 import Cocoa
 
 @main
-class AppDelegate: NSObject, NSApplicationDelegate {
+class AppDelegate: NSObject, NSApplicationDelegate, NSFontChanging {
     
     let fileManager = FileManager.default
     var appConfig: IniFile? = nil
@@ -18,7 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // Application level settings
     var darkModeEnabled: Bool = false
     var wordWrapEnabled: Bool = true
-    let defaultFont: NSFont? = NSFont(name: "Courier New", size: 18)
+    var editorFont: NSFont? = NSFont(name: "Courier New", size: 18)
     
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {
@@ -74,7 +74,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             }else{
                 try fileManager.createDirectory(at: userDataFolder!, withIntermediateDirectories: true)
                 try "[SimpleText]".write(to: configFilePath!, atomically: true, encoding: .utf8)
-                print("Created config at: ", configFilePath?.path)
+                print("Created config at: \(String(describing: configFilePath?.path))")
             }
         }catch{
             print("\(error)")
@@ -111,9 +111,16 @@ class AppDelegate: NSObject, NSApplicationDelegate {
             wE.setWordWrap(enabled: enabled)
         }
     }
+    func setEditorFont(newFont: NSFont){
+        editorFont = newFont
+        for wE in openWindows.values{
+            wE.setTextFont(newFont: newFont)
+        }
+    }
+    
     
     func showFontPanel(currentFont: NSFont?){
-        NSFontPanel.shared.setPanelFont(currentFont ?? defaultFont!, isMultiple: false)
+        NSFontPanel.shared.setPanelFont(currentFont ?? editorFont!, isMultiple: false)
         NSFontPanel.shared.makeKeyAndOrderFront(self)
     }
     
@@ -123,4 +130,3 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         createWindowEditor()
     }
 }
-

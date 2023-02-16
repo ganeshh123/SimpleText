@@ -32,7 +32,7 @@
                             <rect key="frame" x="0.0" y="0.0" width="620" height="460"/>
                             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                             <subviews>
-                                <textView identifier="TextViewEditor" focusRingType="none" importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="bar" allowsUndo="YES" spellingCorrection="YES" smartInsertDelete="YES" id="l4o-vs-4eV" customClass="STTextView" customModule="SimpleText" customModuleProvider="target">
+                                <textView identifier="TextViewEditor" focusRingType="none" importsGraphics="NO" richText="NO" verticallyResizable="YES" usesFontPanel="YES" findStyle="bar" allowsUndo="YES" spellingCorrection="YES" smartInsertDelete="YES" id="l4o-vs-4eV">
                                     <rect key="frame" x="0.0" y="0.0" width="620" height="460"/>
                                     <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                                     <color key="textColor" name="textColor" catalog="System" colorSpace="catalog"/>

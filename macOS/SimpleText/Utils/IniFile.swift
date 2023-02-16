@@ -67,7 +67,7 @@ class IniFile {
         
         let configFileToWrite = configFileLines.joined(separator: "\n")
         
-        // Close C lang opened file
+        // Close file opened with C function
         fclose(configFile)
         do{
             try configFileToWrite.write(toFile: path, atomically: true, encoding: .utf8)

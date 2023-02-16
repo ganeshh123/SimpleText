@@ -20,7 +20,7 @@ class WindowEditorController: NSWindowController, NSWindowDelegate, NSTextViewDe
     @IBOutlet var wordWrapMenuItem: NSMenuItem!
     
     convenience init() {
-        self.init(windowNibName: "WindowEditorController")
+        self.init(windowNibName: "WindowEditor")
     }
 
     override func windowDidLoad() {
@@ -37,7 +37,7 @@ class WindowEditorController: NSWindowController, NSWindowDelegate, NSTextViewDe
         setWordWrap(enabled: appDelegate.wordWrapEnabled)
         wordWrapMenuItem.state = appDelegate.wordWrapEnabled ? .on : .off
         
-        setTextFont(newFont: appDelegate.defaultFont!)
+        setTextFont(newFont: appDelegate.editorFont!)
         
         textViewEditor.delegate = self
     }
@@ -242,7 +242,7 @@ class WindowEditorController: NSWindowController, NSWindowDelegate, NSTextViewDe
         guard let appDelegate = NSApplication.shared.delegate as? AppDelegate else {
              return
         }
-        textViewEditor.font = NSFont(name: textViewEditor.font!.fontName, size: appDelegate.defaultFont!.pointSize)
+        textViewEditor.font = NSFont(name: textViewEditor.font!.fontName, size: appDelegate.editorFont!.pointSize)
     }
     
     @IBAction func darkThemeMenuItemClicked(_ sender: NSMenuItem) {

@@ -1,5 +1,5 @@
 //
-//  Extensions.swift
+//  FontChange.swift
 //  SimpleText
 //
 //  Created by Ganesh on 2/16/23.

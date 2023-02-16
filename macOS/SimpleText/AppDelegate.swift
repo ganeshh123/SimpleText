@@ -8,7 +8,7 @@
 import Cocoa
 
 @main
-class AppDelegate: NSObject, NSApplicationDelegate, NSFontChanging {
+class AppDelegate: NSObject, NSApplicationDelegate {
     
     let fileManager = FileManager.default
     var appConfig: IniFile? = nil
@@ -54,6 +54,7 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSFontChanging {
         return true
     }
     
+    
     func loadSettings(){
         do{
             let userDataFolder: URL? = fileManager.urls(for: .applicationSupportDirectory, in: .userDomainMask).first?.appendingPathComponent("SimpleText")
@@ -98,12 +99,13 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSFontChanging {
         
     }
     
-    func createWindowEditor(){
+    func createWindowEditor() -> UUID{
         let newWindowEditor: WindowEditorController = WindowEditorController()
         let newWindowId: UUID = newWindowEditor.getWindowId()
         
         openWindows[newWindowId.uuidString] = newWindowEditor
         newWindowEditor.showWindow(nil)
+        return newWindowId
     }
     
     func removeWindowEditor(windowId: UUID){

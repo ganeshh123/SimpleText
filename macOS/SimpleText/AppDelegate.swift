@@ -70,6 +70,22 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSFontChanging {
                     let valueStr: String = appConfig!.read(queryKey: "wordWrapEnabled")!
                     wordWrapEnabled = valueStr == "true" || (valueStr != "false" && wordWrapEnabled)
                 }
+                if(appConfig!.read(queryKey: "editorFont") != nil){
+                    let valueStr: String = appConfig!.read(queryKey: "editorFont")!
+                    let fontComponents: [String] = valueStr.components(separatedBy: ", ")
+                    
+                    var fontName: String = "Courier New"
+                    var fontSize: Float = 18
+                    
+                    if(fontComponents.count == 2){
+                        fontName = fontComponents[0]
+                        fontSize = (fontComponents[1] as NSString).floatValue
+                    }
+                    
+                    let newFont: NSFont? = NSFont(name: fontName, size: CGFloat(fontSize))
+                    
+                    editorFont = newFont != nil ? newFont : NSFont(name: "Courier New", size: 18)!
+                }
                 
             }else{
                 try fileManager.createDirectory(at: userDataFolder!, withIntermediateDirectories: true)
@@ -113,6 +129,12 @@ class AppDelegate: NSObject, NSApplicationDelegate, NSFontChanging {
     }
     func setEditorFont(newFont: NSFont){
         editorFont = newFont
+        
+        let fontName: String = editorFont!.fontName
+        let fontSize: CGFloat = editorFont!.pointSize
+        let fontDescription: String = "\(fontName), \(fontSize)"
+        appConfig?.write(keyToStore: "editorFont", valueToStore: fontDescription)
+        
         for wE in openWindows.values{
             wE.setTextFont(newFont: newFont)
         }

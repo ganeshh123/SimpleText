@@ -90,7 +90,7 @@ class WindowEditorController: NSWindowController, NSWindowDelegate, NSTextViewDe
             fileContent = try String(contentsOf: file)
         }
         catch{
-            assertionFailure("Could not read \(file.path)")
+            assertionFailure("Could not read \(file.path): \(error)")
         }
         
         openedFile = file

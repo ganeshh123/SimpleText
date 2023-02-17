@@ -42,7 +42,10 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "desktopicon"; Description: "{cm:CreateDesktopIcon}"; GroupDescription: "{cm:AdditionalIcons}"; Flags: unchecked
 
 [Files]
+; Executable File
 Source: "bin\Release\SimpleText.exe"; DestDir: "{app}"; Flags: ignoreversion
+; License File
+Source: "..\LICENSE.MD"; DestDir: "{app}"; DestName: "License.txt"; Flags: ignoreversion
 
 
 [Icons]
@@ -50,6 +53,12 @@ Name: "{autoprograms}\SimpleText"; Filename: "{app}\SimpleText.exe"
 Name: "{autodesktop}\SimpleText"; Filename: "{app}\SimpleText.exe"; Tasks: desktopicon
 
 [Registry]
+; Add app name and company to Open With
+Root: HKA; Subkey: "Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\MuiCache"; ValueType: string; ValueName: "{app}\SimpleText.exe.FriendlyAppName"; ValueData: "SimpleText"; Flags: uninsdeletekey
+Root: HKA; Subkey: "Software\Classes\Local Settings\Software\Microsoft\Windows\Shell\MuiCache"; ValueType: string; ValueName: "{app}\SimpleText.exe.ApplicationCompany"; ValueData: "Ganesh H"; Flags: uninsdeletekey
+; Set command to handle Open With action
+Root: HKA; Subkey: "Software\Classes\Applications\SimpleText.exe\shell\open\command"; ValueType: string; ValueName: ""; ValueData: """{app}\SimpleText.exe"" ""%1"""; Flags: uninsdeletekey
+; Register supported file types
 Root: HKA; Subkey: "Software\Classes\Applications\SimpleText.exe\SupportedTypes"; ValueType: string; ValueName: ".txt"; ValueData: ""; Flags: uninsdeletekey
 Root: HKA; Subkey: "Software\Classes\Applications\SimpleText.exe\SupportedTypes"; ValueType: string; ValueName: ".md"; ValueData: ""; Flags: uninsdeletekey
 Root: HKA; Subkey: "Software\Classes\Applications\SimpleText.exe\SupportedTypes"; ValueType: string; ValueName: ".ini"; ValueData: ""; Flags: uninsdeletekey

@@ -10,32 +10,34 @@ using System.Windows.Forms;
 
 namespace SimpleText
 {
-    class AppDelegate : WindowsFormsApplicationBase
+    public class AppDelegate : WindowsFormsApplicationBase
     {
         // Record of opened windows
-        static readonly IDictionary<string, WindowEditor> openWindows = new Dictionary<string, WindowEditor>();
+        readonly IDictionary<string, WindowEditor> openWindows = new Dictionary<string, WindowEditor>();
 
-        // Shared Static Classes
-        static IniFile appConfig = null;
-        static readonly TypeConverter fontConverter = TypeDescriptor.GetConverter(typeof(Font));
+        // Shared Classes
+        IniFile appConfig = null;
+        readonly TypeConverter fontConverter = TypeDescriptor.GetConverter(typeof(Font));
 
         // Shared settings
-        internal static bool darkModeEnabled = (int)Registry.GetValue("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "AppsUseLightTheme", "1") == 0;
-        internal static bool wordWrapEnabled = true;
-        internal static Font editorFont = new Font("Consolas", 12, FontStyle.Regular);
+        internal bool darkModeEnabled = (int)Registry.GetValue("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "AppsUseLightTheme", "1") == 0;
+        internal bool wordWrapEnabled = true;
+        internal Font editorFont = new Font("Consolas", 12, FontStyle.Regular);
 
         public AppDelegate()
         {
             this.IsSingleInstance= true;
-            this.StartupNextInstance += handleNewInstance;
+            this.StartupNextInstance += HandleNewInstance;
 
             LoadSettings();
             CreateWindowEditor();
         }
 
-        void handleNewInstance(object sender, StartupNextInstanceEventArgs e)
+        void HandleNewInstance(object sender, StartupNextInstanceEventArgs e)
         {
+            string openFile = e.CommandLine.Count > 1 ? e.CommandLine[1] : null;
 
+            CreateWindowEditor(openFile);
         }
 
         protected override void OnCreateMainForm()
@@ -43,7 +45,7 @@ namespace SimpleText
             MainForm = openWindows[openWindows.Keys.First()];
         }
 
-        public static void LoadSettings()
+        public void LoadSettings()
         {
             string userDataFolder = Path.Combine(Environment.GetFolderPath(Environment.SpecialFolder.ApplicationData), "SimpleText");
             Directory.CreateDirectory(userDataFolder);
@@ -69,7 +71,7 @@ namespace SimpleText
             }
         }
 
-        public static void WriteSetting(string key, string value)
+        public void WriteSetting(string key, string value)
         {
             if (appConfig == null)
             {
@@ -80,21 +82,23 @@ namespace SimpleText
 
         // Window creation and close functions
 
-        public static string CreateWindowEditor(string openFile = null)
+        public string CreateWindowEditor(string openFile = null)
         {
-            WindowEditor newWindowEditor = new WindowEditor();
+            WindowEditor newWindowEditor = new WindowEditor(this);
             string newWindowId = newWindowEditor.GetWindowId();
 
             openWindows.Add(newWindowId, newWindowEditor);
+            newWindowEditor.Show();
             if (openFile != null)
             {
                 newWindowEditor.ReadFile(openFile);
             }
-            newWindowEditor.Show();
+            newWindowEditor.TextBoxFocus();
+            this.MainForm = newWindowEditor;
             return newWindowId;
         }
 
-        public static void RemoveWindowEditor(string windowId)
+        public void RemoveWindowEditor(string windowId)
         {
             openWindows.Remove(windowId);
             if (openWindows.Count < 1)
@@ -103,7 +107,7 @@ namespace SimpleText
             }
         }
 
-        public static void CloseAllWindows()
+        public void CloseAllWindows()
         {
             foreach (var oW in openWindows.ToList())
             {
@@ -114,7 +118,7 @@ namespace SimpleText
 
         // Toggles for shared settings
 
-        public static void SetEdtiorWordWrap(bool enabled)
+        public void SetEdtiorWordWrap(bool enabled)
         {
             wordWrapEnabled = enabled;
             WriteSetting("wordWrapEnabled", wordWrapEnabled ? "true" : "false");
@@ -124,7 +128,7 @@ namespace SimpleText
             }
         }
 
-        public static void SetEditorDarkMode(bool enabled)
+        public void SetEditorDarkMode(bool enabled)
         {
             darkModeEnabled = enabled;
             foreach (var oW in openWindows)
@@ -133,7 +137,7 @@ namespace SimpleText
             }
         }
 
-        public static void SetEditorFont(Font selectedFont)
+        public void SetEditorFont(Font selectedFont)
         {
             editorFont = selectedFont;
             string selectedFontString = fontConverter.ConvertToString(editorFont);

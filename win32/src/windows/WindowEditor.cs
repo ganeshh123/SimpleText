@@ -14,6 +14,7 @@ namespace SimpleText
     public partial class WindowEditor : Form
     {
 
+        AppDelegate appDelegate = null;
         private readonly string windowId = Guid.NewGuid().ToString();
 
         // Data Structures
@@ -27,15 +28,17 @@ namespace SimpleText
         public Color bgColor = Color.White;
 
 
-        public WindowEditor()
+        public WindowEditor(AppDelegate creator)
         {
             InitializeComponent();
+            appDelegate = creator;
+
             this.Text = $"New File - SimpleText";
 
             // Set shared settings
-            SetDarkTheme(AppDelegate.darkModeEnabled);
-            SetWordWrap(AppDelegate.wordWrapEnabled);
-            SetFont(AppDelegate.editorFont);
+            SetDarkTheme(appDelegate.darkModeEnabled);
+            SetWordWrap(appDelegate.wordWrapEnabled);
+            SetFont(appDelegate.editorFont);
 
             Size = new Size(654, 487);
         }
@@ -56,6 +59,7 @@ namespace SimpleText
 
         // Load and Save Text Data
         internal void ReadFile(string filePath){
+            Debug.WriteLine(filePath);
             FileStream fileToOpen = File.OpenRead(filePath);
             string fileContent = new StreamReader(fileToOpen, Encoding.UTF8).ReadToEnd();
             fileToOpen.Close();
@@ -168,7 +172,7 @@ namespace SimpleText
 
                     void menuItemHoverColorChange(object sender, EventArgs e)
                     {
-                        if (AppDelegate.darkModeEnabled == false)
+                        if (appDelegate.darkModeEnabled == false)
                         {
                             return;
                         }
@@ -200,6 +204,10 @@ namespace SimpleText
         }
 
         // Utility Functions
+        internal void TextBoxFocus()
+        {
+            textBoxEditor.Focus();
+        }
         private void TextBoxCursorToEnd()
         {
             textBoxEditor.SelectionStart = textBoxEditor.Text.Length;
@@ -236,7 +244,7 @@ namespace SimpleText
                     this.Close();
                 }
             }
-            AppDelegate.RemoveWindowEditor(this.windowId);
+            appDelegate.RemoveWindowEditor(this.windowId);
 
         }
 
@@ -261,7 +269,7 @@ namespace SimpleText
             /*var info = new System.Diagnostics.ProcessStartInfo(Application.ExecutablePath);
             System.Diagnostics.Process.Start(info);*/
 
-            AppDelegate.CreateWindowEditor();
+            appDelegate.CreateWindowEditor();
         }
 
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
@@ -408,7 +416,7 @@ namespace SimpleText
             };
             if (fontChooser.ShowDialog() != DialogResult.Cancel)
             {
-                AppDelegate.SetEditorFont(fontChooser.Font);
+                appDelegate.SetEditorFont(fontChooser.Font);
             }
         }
 
@@ -416,7 +424,7 @@ namespace SimpleText
         {
             bool enableWordWrap = !wordWrapToolStripMenuItem.Checked;
             textBoxEditor.WordWrap = enableWordWrap;
-            AppDelegate.SetEdtiorWordWrap(enableWordWrap);
+            appDelegate.SetEdtiorWordWrap(enableWordWrap);
         }
 
         private void ZoomInToolStripMenuItem_Click(object sender, EventArgs e)
@@ -437,7 +445,7 @@ namespace SimpleText
         private void DarkThemeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool enableDarkTheme = !darkThemeToolStripMenuItem.Checked;
-            AppDelegate.SetEditorDarkMode(enableDarkTheme);
+            appDelegate.SetEditorDarkMode(enableDarkTheme);
         }
 
         private void ViewHelpToolStripMenuItem_Click(object sender, EventArgs e)
@@ -469,7 +477,7 @@ namespace SimpleText
 
         private void QuitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            AppDelegate.CloseAllWindows();
+            appDelegate.CloseAllWindows();
         }
     }
 }

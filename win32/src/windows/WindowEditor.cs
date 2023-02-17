@@ -33,9 +33,9 @@ namespace SimpleText
             this.Text = $"New File - SimpleText";
 
             // Set shared settings
-            SetDarkTheme(Program.darkModeEnabled);
-            SetWordWrap(Program.wordWrapEnabled);
-            SetFont(Program.editorFont);
+            SetDarkTheme(AppDelegate.darkModeEnabled);
+            SetWordWrap(AppDelegate.wordWrapEnabled);
+            SetFont(AppDelegate.editorFont);
 
             Size = new Size(654, 487);
         }
@@ -55,7 +55,7 @@ namespace SimpleText
         }
 
         // Load and Save Text Data
-        private void ReadFile(string filePath){
+        internal void ReadFile(string filePath){
             FileStream fileToOpen = File.OpenRead(filePath);
             string fileContent = new StreamReader(fileToOpen, Encoding.UTF8).ReadToEnd();
             fileToOpen.Close();
@@ -168,7 +168,7 @@ namespace SimpleText
 
                     void menuItemHoverColorChange(object sender, EventArgs e)
                     {
-                        if (Program.darkModeEnabled == false)
+                        if (AppDelegate.darkModeEnabled == false)
                         {
                             return;
                         }
@@ -236,7 +236,7 @@ namespace SimpleText
                     this.Close();
                 }
             }
-            Program.RemoveWindowEditor(this.windowId);
+            AppDelegate.RemoveWindowEditor(this.windowId);
 
         }
 
@@ -261,7 +261,7 @@ namespace SimpleText
             /*var info = new System.Diagnostics.ProcessStartInfo(Application.ExecutablePath);
             System.Diagnostics.Process.Start(info);*/
 
-            Program.CreateWindowEditor();
+            AppDelegate.CreateWindowEditor();
         }
 
         private void OpenToolStripMenuItem_Click(object sender, EventArgs e)
@@ -408,7 +408,7 @@ namespace SimpleText
             };
             if (fontChooser.ShowDialog() != DialogResult.Cancel)
             {
-                Program.SetEditorFont(fontChooser.Font);
+                AppDelegate.SetEditorFont(fontChooser.Font);
             }
         }
 
@@ -416,7 +416,7 @@ namespace SimpleText
         {
             bool enableWordWrap = !wordWrapToolStripMenuItem.Checked;
             textBoxEditor.WordWrap = enableWordWrap;
-            Program.SetEdtiorWordWrap(enableWordWrap);
+            AppDelegate.SetEdtiorWordWrap(enableWordWrap);
         }
 
         private void ZoomInToolStripMenuItem_Click(object sender, EventArgs e)
@@ -437,7 +437,7 @@ namespace SimpleText
         private void DarkThemeToolStripMenuItem_Click(object sender, EventArgs e)
         {
             bool enableDarkTheme = !darkThemeToolStripMenuItem.Checked;
-            Program.SetEditorDarkMode(enableDarkTheme);
+            AppDelegate.SetEditorDarkMode(enableDarkTheme);
         }
 
         private void ViewHelpToolStripMenuItem_Click(object sender, EventArgs e)
@@ -469,7 +469,7 @@ namespace SimpleText
 
         private void QuitToolStripMenuItem_Click(object sender, EventArgs e)
         {
-            Program.CloseAllWindows();
+            AppDelegate.CloseAllWindows();
         }
     }
 }

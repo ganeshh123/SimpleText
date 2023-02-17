@@ -24,13 +24,15 @@ namespace SimpleText
         internal bool wordWrapEnabled = true;
         internal Font editorFont = new Font("Consolas", 12, FontStyle.Regular);
 
-        public AppDelegate()
+        public AppDelegate(string[] bootArgs= null)
         {
             this.IsSingleInstance= true;
             this.StartupNextInstance += HandleNewInstance;
 
             LoadSettings();
-            CreateWindowEditor();
+
+            string openFile = (bootArgs != null && bootArgs.Length > 1) ? bootArgs[1] : null;
+            CreateWindowEditor(openFile);
         }
 
         void HandleNewInstance(object sender, StartupNextInstanceEventArgs e)
@@ -104,6 +106,10 @@ namespace SimpleText
             if (openWindows.Count < 1)
             {
                 Application.Exit();
+            }
+            else
+            {
+                MainForm = openWindows.ToList()[0].Value;
             }
         }
 

@@ -18,7 +18,7 @@ class AppDelegate: NSObject, NSApplicationDelegate {
     // Application level settings
     var darkModeEnabled: Bool = false
     var wordWrapEnabled: Bool = true
-    var editorFont: NSFont? = NSFont(name: "Courier New", size: 18)
+    var editorFont: NSFont? = NSFont(name: "ArialMT", size: 18)
     
     
     func applicationDidFinishLaunching(_ aNotification: Notification) {

@@ -32,6 +32,7 @@ Compression=lzma
 SolidCompression=yes
 WizardStyle=modern
 WizardSmallImageFile=..\assets\SimpleText_Logo_Square.bmp
+ChangesAssociations=yes
 UninstallDisplayIcon={app}\SimpleText.exe
 
 [Languages]
@@ -48,6 +49,16 @@ Source: "bin\Release\SimpleText.exe"; DestDir: "{app}"; Flags: ignoreversion
 Name: "{autoprograms}\SimpleText"; Filename: "{app}\SimpleText.exe"
 Name: "{autodesktop}\SimpleText"; Filename: "{app}\SimpleText.exe"; Tasks: desktopicon
 
+[Registry]
+Root: HKA; Subkey: "Software\Classes\Applications\SimpleText.exe\SupportedTypes"; ValueType: string; ValueName: ".txt"; ValueData: ""; Flags: uninsdeletekey
+Root: HKA; Subkey: "Software\Classes\Applications\SimpleText.exe\SupportedTypes"; ValueType: string; ValueName: ".md"; ValueData: ""; Flags: uninsdeletekey
+Root: HKA; Subkey: "Software\Classes\Applications\SimpleText.exe\SupportedTypes"; ValueType: string; ValueName: ".ini"; ValueData: ""; Flags: uninsdeletekey
+Root: HKA; Subkey: "Software\Classes\Applications\SimpleText.exe\SupportedTypes"; ValueType: string; ValueName: ".xml"; ValueData: ""; Flags: uninsdeletekey
+Root: HKA; Subkey: "Software\Classes\Applications\SimpleText.exe\SupportedTypes"; ValueType: string; ValueName: ".bat"; ValueData: ""; Flags: uninsdeletekey
+
 [Run]
 Filename: "{app}\SimpleText.exe"; Description: "{cm:LaunchProgram,SimpleText}"; Flags: nowait postinstall skipifsilent
+
+[UninstallDelete]
+Type: filesandordirs; Name:  "{userappdata}\SimpleText"
 

@@ -15,7 +15,7 @@ namespace SimpleText
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
             string[] bootArgs = Environment.GetCommandLineArgs();
-            AppDelegate mainProcess = new AppDelegate();
+            AppDelegate mainProcess = new AppDelegate(bootArgs);
             mainProcess.Run(bootArgs);
         }
 

@@ -22,7 +22,7 @@ namespace SimpleText
         // Shared settings
         internal bool darkModeEnabled = (int)Registry.GetValue("HKEY_CURRENT_USER\\Software\\Microsoft\\Windows\\CurrentVersion\\Themes\\Personalize", "AppsUseLightTheme", "1") == 0;
         internal bool wordWrapEnabled = true;
-        internal Font editorFont = new Font("Consolas", 12, FontStyle.Regular);
+        internal Font editorFont = new Font("Arial", 12, FontStyle.Regular);
 
         public AppDelegate(string[] bootArgs= null)
         {

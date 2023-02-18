@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>SimpleText</RootNamespace>
     <AssemblyName>SimpleText</AssemblyName>
-    <TargetFrameworkVersion>v3.5</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v4.8</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <Deterministic>true</Deterministic>
     <IsWebBootstrapper>false</IsWebBootstrapper>
@@ -26,6 +26,7 @@
     <ApplicationVersion>1.0.0.%2a</ApplicationVersion>
     <UseApplicationTrust>false</UseApplicationTrust>
     <BootstrapperEnabled>true</BootstrapperEnabled>
+    <TargetFrameworkProfile />
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -36,6 +37,7 @@
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
     <PlatformTarget>AnyCPU</PlatformTarget>
@@ -45,11 +47,13 @@
     <DefineConstants>TRACE</DefineConstants>
     <ErrorReport>prompt</ErrorReport>
     <WarningLevel>4</WarningLevel>
+    <Prefer32Bit>false</Prefer32Bit>
   </PropertyGroup>
   <PropertyGroup>
     <ApplicationIcon>Resources\SimpleText.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Microsoft.VisualBasic" />
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -67,30 +71,32 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
-    <Compile Include="WindowAbout.cs">
+    <Compile Include="src\AppDelegate.cs" />
+    <Compile Include="src\utils\IniFile.cs" />
+    <Compile Include="src\windows\WindowAbout.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WindowAbout.Designer.cs">
+    <Compile Include="src\windows\WindowAbout.Designer.cs">
       <DependentUpon>WindowAbout.cs</DependentUpon>
     </Compile>
-    <Compile Include="WindowMain.cs">
+    <Compile Include="src\windows\WindowEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="WindowMain.Designer.cs">
-      <DependentUpon>WindowMain.cs</DependentUpon>
+    <Compile Include="src\windows\WindowEditor.Designer.cs">
+      <DependentUpon>WindowEditor.cs</DependentUpon>
     </Compile>
-    <Compile Include="Program.cs" />
+    <Compile Include="src\Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>
       <SubType>Designer</SubType>
       <LastGenOutput>Resources.Designer.cs</LastGenOutput>
     </EmbeddedResource>
-    <EmbeddedResource Include="WindowAbout.resx">
+    <EmbeddedResource Include="src\windows\WindowAbout.resx">
       <DependentUpon>WindowAbout.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="WindowMain.resx">
-      <DependentUpon>WindowMain.cs</DependentUpon>
+    <EmbeddedResource Include="src\windows\WindowEditor.resx">
+      <DependentUpon>WindowEditor.cs</DependentUpon>
     </EmbeddedResource>
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
@@ -113,4 +119,8 @@
     <None Include="Resources\SimpleText.ico" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+  <PropertyGroup>
+    <PostBuildEvent>
+    </PostBuildEvent>
+  </PropertyGroup>
 </Project>

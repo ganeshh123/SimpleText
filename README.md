@@ -1,32 +1,60 @@
 # SimpleText
-An extremely simple plain text editor.
+An extremely simple plain text editor.  
+
 ![simpletext-cover](docs/img_cover.png)
+
 - [Download](#download)
-- [System Requirements](#system-requirements)
+	- [Installation](#installation)
+	- [System Requirements](#system-requirements)
 - [Usage](#usage)
+	- [Interface](#interface)
+	- [App Menu](#app-menu)
+	- [File Menu](#file-menu)
+	- [Edit Menu](#edit-menu)
+	- [Format Menu](#format-menu)
+	- [View Menu](#view-menu)
+	- [Help Menu](#help-menu)
 - [Building](#building)
+	- [Source Code](#source-code)
+	- [Windows - 32 Bit](#windows---32-bit)
+	- [macOS](#macos)
 - [Credits](#credits)
 
-## Download
- Get the latest download from the releases page:
- 
- [https://github.com/ganeshh123/SimpleText/releases](https://github.com/ganeshh123/SimpleText/releases)
- 
- ## System Requirements  
- 
- ### Windows
- - Windows 10 (1903+), Windows 11
- - Windows 7, Windows 8 with [.NET Framework 4.8 Runtime](https://support.microsoft.com/en-us/topic/microsoft-net-framework-4-8-offline-installer-for-windows-9d23f658-3b97-68ab-d013-aa3c3e7495e0) installed
 
-### macOS
-- OSX 10.9 Mavericks or later
+## Download
+**Windows**:  
+- [Download for Windows](https://github.com/ganeshh123/SimpleText/releases/download/1.1.0/SimpleText-win32_setup-1_1_0.exe)
+- [Download for Windows (Portable)](https://github.com/ganeshh123/SimpleText/releases/download/1.1.0/SimpleText-win32-1_1_0.zip)
+
+**macOS**:  
+- [Download for macOS](https://github.com/ganeshh123/SimpleText/releases/download/1.1.0/SimpleText-macOS-1_1_0.zip)
+
+**Older Versions**:
+- [All Releases](https://github.com/ganeshh123/SimpleText/releases)
+
+### Installation
+
+**Windows**:
+- Open the downloaded setup file and follow instructions to install
+- Open `SimpleText` from the start menu
+
+**macOS**:
+- Extract the downloaded zip file with archive utility
+- Drag `SimpleText.app` into the `Applications` folder
+- Open `SimpleText` from the launchpad
+
+### System Requirements
+
+**Windows**:   
+- Windows 10 (1903+), Windows 11
+- Windows 7, Windows 8 with [.NET Framework 4.8 Runtime](https://support.microsoft.com/en-us/topic/microsoft-net-framework-4-8-offline-installer-for-windows-9d23f658-3b97-68ab-d013-aa3c3e7495e0) installed
+
+**macOS**:  
 - macOS 10.12 Sierra or later
- 
-## Usage
-### Launching the Application
- Double click on the downloaded program executable file:
- - **Windows**: `SimpleText.exe`
- - **macOS**: `SimpleText.app`
+- OSX 10.9 Mavericks or later
+
+## Usage  
+
 ### Interface
 The user interface consists of three parts - the title bar, the menu bar, and the editor:
 

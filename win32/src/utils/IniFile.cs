@@ -3,10 +3,9 @@ using System.Reflection;
 using System.Runtime.InteropServices;
 using System.Text;
 
-// Change this to match your program's normal namespace
 namespace SimpleText
 {
-    class IniFile   // revision 11
+    class IniFile
     {
         readonly string Path;
         readonly string EXE = Assembly.GetExecutingAssembly().GetName().Name;
@@ -50,5 +49,3 @@ namespace SimpleText
         }
     }
 }
-
-//https://stackoverflow.com/a/14906422

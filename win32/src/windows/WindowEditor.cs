@@ -13,8 +13,7 @@ namespace SimpleText
 {
     public partial class WindowEditor : Form
     {
-
-        AppDelegate appDelegate = null;
+        readonly AppDelegate appDelegate = null;
         private readonly string windowId = Guid.NewGuid().ToString();
 
         // Data Structures

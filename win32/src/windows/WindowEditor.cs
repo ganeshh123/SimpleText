@@ -66,9 +66,10 @@ namespace SimpleText
 
             openFilePath = filePath;
             openFileInitialText = fileContent;
-            this.Text = $"{Path.GetFileName(filePath)} - SimpleText";
+            Text = $"{Path.GetFileName(filePath)} - SimpleText";
 
             textBoxEditor.Text = fileContent;
+            FixNewLines();
             TextBoxCursorToEnd();
             UpdateFileModified();
 
@@ -212,6 +213,12 @@ namespace SimpleText
         {
             textBoxEditor.SelectionStart = textBoxEditor.Text.Length;
             textBoxEditor.SelectionLength = 0;
+        }
+
+        private void FixNewLines()
+        {
+            textBoxEditor.Text = textBoxEditor.Text.Replace("\r\n", Environment.NewLine);
+            textBoxEditor.Text = textBoxEditor.Text.Replace("\n", Environment.NewLine);
         }
 
         // Actions to perform when user stops writing
@@ -386,6 +393,7 @@ namespace SimpleText
         private void PasteToolStripMenuItem_Click(object sender, EventArgs e)
         {
             textBoxEditor.Paste();
+            FixNewLines();
         }
 
         private void DeleteToolStripMenuItem_Click(object sender, EventArgs e)

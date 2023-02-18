@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define App_name "SimpleText"
-#define App_verison "1.0.1"
+#define App_version "1.1.0"
 #define App_author "Ganesh H"
 #define App_homepage "https://app.gn3.sh/SimpleText/"
 
@@ -11,9 +11,9 @@
 ; (To generate a new GUID, click Tools | Generate GUID inside the IDE.)
 AppId={{561009F6-BA44-490C-B99B-9078E69BABB3}
 AppName={#App_name}
-AppVersion={#App_verison}
+AppVersion={#App_version}
 AppVerName=SimpleText
-VersionInfoVersion={#App_verison}
+VersionInfoVersion={#App_version}
 AppPublisher={#App_author}
 AppCopyright=(C) {#App_author}
 AppPublisherURL={#App_homepage}

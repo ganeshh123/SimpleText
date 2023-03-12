@@ -64,7 +64,7 @@ namespace SimpleText
             fileToOpen.Close();
 
             openFilePath = filePath;
-            openFileInitialText = fileContent;
+            openFileInitialText = fileContent.Replace("\r", "").Replace("\n", Environment.NewLine); ;
             Text = $"{Path.GetFileName(filePath)} - SimpleText";
 
             textBoxEditor.Text = fileContent;
@@ -216,8 +216,7 @@ namespace SimpleText
 
         private void FixNewLines()
         {
-            textBoxEditor.Text = textBoxEditor.Text.Replace("\r\n", Environment.NewLine);
-            textBoxEditor.Text = textBoxEditor.Text.Replace("\n", Environment.NewLine);
+            textBoxEditor.Text = textBoxEditor.Text.Replace("\r", "").Replace("\n", Environment.NewLine);
         }
 
         // Actions to perform when user stops writing

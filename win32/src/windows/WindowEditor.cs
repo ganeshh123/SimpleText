@@ -293,8 +293,16 @@ namespace SimpleText
             }
 
             Cursor = Cursors.WaitCursor;
-            ReadFile(openFile.FileName);
-            Cursor= Cursors.Default;
+            if (openFilePath != null)
+            {
+                // If user is already working on a file, open the file in a new window.
+                appDelegate.CreateWindowEditor(openFile.FileName);
+            }
+            else
+            {
+                ReadFile(openFile.FileName);
+            }
+            Cursor = Cursors.Default;
         }
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)

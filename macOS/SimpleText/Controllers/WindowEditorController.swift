@@ -172,7 +172,15 @@ class WindowEditorController: NSWindowController, NSWindowDelegate, NSTextViewDe
             return
         }
         
-        readFile(file: result!)
+        if(openedFile != nil || fileModified == true){
+            guard let appDelegate = NSApplication.shared.delegate as? AppDelegate else {
+                return
+            }
+            appDelegate.createWindowEditor(openFile: result)
+        }else{
+            readFile(file: result!)
+        }
+        
     }
     
     @IBAction func saveMenuItemClicked(_ sender: NSMenuItem?) {

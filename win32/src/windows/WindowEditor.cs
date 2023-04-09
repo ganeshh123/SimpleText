@@ -293,7 +293,7 @@ namespace SimpleText
             }
 
             Cursor = Cursors.WaitCursor;
-            if (openFilePath != null)
+            if (openFilePath != null || fileModified == true)
             {
                 // If user is already working on a file, open the file in a new window.
                 appDelegate.CreateWindowEditor(openFile.FileName);

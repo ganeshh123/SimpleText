@@ -23,11 +23,11 @@ An extremely simple plain text editor.
 
 ## Download
 **Windows**:  
-- [Download for Windows](https://github.com/ganeshh123/SimpleText/releases/download/1.1.0/SimpleText-win32_setup-1_1_1.exe)
-- [Download for Windows (Portable)](https://github.com/ganeshh123/SimpleText/releases/download/1.1.0/SimpleText-win32-1_1_1.zip)
+- [Download for Windows](https://github.com/ganeshh123/SimpleText/releases/download/1.1.1/SimpleText-win32_setup-1_1_1.exe)
+- [Download for Windows (Portable)](https://github.com/ganeshh123/SimpleText/releases/download/1.1.1/SimpleText-win32-1_1_1.zip)
 
 **macOS**:  
-- [Download for macOS](https://github.com/ganeshh123/SimpleText/releases/download/1.1.0/SimpleText-macOS-1_1_1.zip)
+- [Download for macOS](https://github.com/ganeshh123/SimpleText/releases/download/1.1.1/SimpleText-macOS-1_1_1.zip)
 
 **Older Versions**:
 - [All Releases](https://github.com/ganeshh123/SimpleText/releases)

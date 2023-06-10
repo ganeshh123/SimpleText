@@ -64,7 +64,7 @@ namespace SimpleText
             fileToOpen.Close();
 
             openFilePath = filePath;
-            openFileInitialText = fileContent;
+            openFileInitialText = fileContent.Replace("\r", "").Replace("\n", Environment.NewLine); ;
             Text = $"{Path.GetFileName(filePath)} - SimpleText";
 
             textBoxEditor.Text = fileContent;
@@ -216,8 +216,7 @@ namespace SimpleText
 
         private void FixNewLines()
         {
-            textBoxEditor.Text = textBoxEditor.Text.Replace("\r\n", Environment.NewLine);
-            textBoxEditor.Text = textBoxEditor.Text.Replace("\n", Environment.NewLine);
+            textBoxEditor.Text = textBoxEditor.Text.Replace("\r", "").Replace("\n", Environment.NewLine);
         }
 
         // Actions to perform when user stops writing
@@ -294,8 +293,16 @@ namespace SimpleText
             }
 
             Cursor = Cursors.WaitCursor;
-            ReadFile(openFile.FileName);
-            Cursor= Cursors.Default;
+            if (openFilePath != null || fileModified == true)
+            {
+                // If user is already working on a file, open the file in a new window.
+                appDelegate.CreateWindowEditor(openFile.FileName);
+            }
+            else
+            {
+                ReadFile(openFile.FileName);
+            }
+            Cursor = Cursors.Default;
         }
 
         private void SaveToolStripMenuItem_Click(object sender, EventArgs e)

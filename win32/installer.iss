@@ -2,7 +2,7 @@
 ; SEE THE DOCUMENTATION FOR DETAILS ON CREATING INNO SETUP SCRIPT FILES!
 
 #define App_name "SimpleText"
-#define App_version "1.1.0"
+#define App_version "1.1.1"
 #define App_author "Ganesh H"
 #define App_homepage "https://app.gn3.sh/SimpleText/"
 

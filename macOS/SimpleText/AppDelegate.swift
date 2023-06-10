@@ -83,12 +83,15 @@ class AppDelegate: NSObject, NSApplicationDelegate {
         
     }
     
-    func createWindowEditor() -> UUID{
+    func createWindowEditor(openFile: URL? = nil) -> UUID{
         let newWindowEditor: WindowEditorController = WindowEditorController()
         let newWindowId: UUID = newWindowEditor.getWindowId()
         
         openWindows[newWindowId.uuidString] = newWindowEditor
         newWindowEditor.showWindow(nil)
+        if(openFile != nil){
+            newWindowEditor.readFile(file: openFile!)
+        }
         return newWindowId
     }
     
